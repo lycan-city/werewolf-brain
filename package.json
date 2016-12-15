@@ -1,0 +1,14 @@
+{
+  "name": "werewolf-brain",
+  "version": "1.0.0",
+  "description": "Werewolf game brain",
+  "main": "index.js",
+  "keywords": [
+    "werewolf"
+  ],
+  "authors": [
+    "wistcc <wistcc@gmail.com> http://winnercrespo.com", 
+    "vetom <tomasverasm@gmail.com>"
+  ],
+  "license": "ISC"
+}
