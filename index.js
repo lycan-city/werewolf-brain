@@ -8,8 +8,9 @@ exports.getAllCards = function () {
 }
 
 exports.getBalancedGame = function (players) {
+    var choosenCards = classifyCards(cards.all);
     while (currentWeight < -1 || currentWeight > 1) {
-        setGame(players);
+        setGame(players, choosenCards);
     }
 
     return {
@@ -19,25 +20,21 @@ exports.getBalancedGame = function (players) {
 }
 
 function classifyCards(cards) {
-    negatives = [];
-    nonnegatives = [];
+    var deck = { negatives : [], nonnegatives: [] };
     cards.map(function(card){
         if(card.value < 0)
             for (var i = 0; i < card.amount; i++)
-                negatives.push({role: card.role, value: card.value, amount: 1 });
+                deck.negatives.push({role: card.role, value: card.value, amount: 1 });
         else
             for (var i = 0; i < card.amount; i++)
-                nonnegatives.push({role: card.role, value: card.value, amount: 1 });
+                deck.nonnegatives.push({role: card.role, value: card.value, amount: 1 });
     });
 
-    return {
-        negatives: negatives,
-        nonnegatives: nonnegatives
-    };
+    return deck;
 }
 
-function setGame(players) {
-    resetValues();
+function setGame(players, choosenCards) {
+    resetValues(choosenCards);
     //get first card randomly
     addCardToDeck(getRandom(0, 1));
     players--;
@@ -47,10 +44,10 @@ function setGame(players) {
     }
 }
 
-function resetValues() {
+function resetValues(choosenCards) {
     deck = {};
     currentWeight = 0;
-    availableCards = classifyCards(cards.all);
+    availableCards = JSON.parse(JSON.stringify(choosenCards));
 }
 
 function addCardToDeck(isNegative) {
