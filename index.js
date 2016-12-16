@@ -18,6 +18,24 @@ exports.getBalancedGame = function (players) {
     };
 }
 
+function classifyCards(cards) {
+    negatives = [];
+    nonnegatives = [];
+    cards.map(function(card){
+        if(card.value < 0)
+            for (var i = 0; i < card.amount; i++)
+                negatives.push({role: card.role, value: card.value, amount: 1 });
+        else
+            for (var i = 0; i < card.amount; i++)
+                nonnegatives.push({role: card.role, value: card.value, amount: 1 });
+    });
+
+    return {
+        negatives: negatives,
+        nonnegatives: nonnegatives
+    };
+}
+
 function setGame(players) {
     resetValues();
     //get first card randomly
@@ -32,7 +50,7 @@ function setGame(players) {
 function resetValues() {
     deck = {};
     currentWeight = 0;
-    availableCards = JSON.parse(JSON.stringify(cards));
+    availableCards = classifyCards(cards.all);
 }
 
 function addCardToDeck(isNegative) {
