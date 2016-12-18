@@ -7,7 +7,26 @@ exports.getAllCards = function () {
     return cards.all;
 }
 
-exports.getBalancedGame = function (players, chosenCards) {
+exports.getCardsFromTemplate = function (template) {
+    return getCardsFromTemplate(template);
+}
+
+exports.getBalancedGame = function (platers, chosenCards){
+    return getBalancedGame(platers, chosenCards);
+}
+
+exports.getGameFromTemplate = function (players, template){
+    return getBalancedGame(players, getCardsFromTemplate(template));
+}
+
+
+function getCardsFromTemplate(template){
+    return cards.all.filter(function (card) { 
+        return card.templates & template; 
+    });
+}
+
+function getBalancedGame(players, chosenCards) {
     chosenCards = classifyCards(chosenCards || cards.all);
     while (currentWeight < -1 || currentWeight > 1) {
         setGame(players, chosenCards);
