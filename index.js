@@ -1,4 +1,5 @@
 var cards = require('./cards');
+var templates = require('./templates');
 var availableCards = {};
 var deck = {};
 var currentWeight = 100;
@@ -7,29 +8,28 @@ exports.getAllCards = function () {
     return cards.all;
 }
 
-exports.getCardsFromTemplate = function (template) {
-    return getCardsFromTemplate(template);
+exports.getAllTemplates = function () {
+    return templates.all;
 }
 
-exports.getBalancedGame = function (platers, chosenCards){
-    return getBalancedGame(platers, chosenCards);
+exports.getBalancedGame = function (players, chosenCards) {
+    return _getBalancedGame(players, chosenCards);
 }
 
-exports.getGameFromTemplate = function (players, template){
-    return getBalancedGame(players, getCardsFromTemplate(template));
+exports.getGameFromTemplate = function (players, template) {
+    return _getBalancedGame(players, _getCardsFromTemplate(template));
 }
 
-
-function getCardsFromTemplate(template){
-    return cards.all.filter(function (card) { 
-        return card.templates & template; 
+function _getCardsFromTemplate(template) {
+    return cards.all.filter(function (card) {
+        return template.indexOf(card.role) >= 0;
     });
 }
 
-function getBalancedGame(players, chosenCards) {
-    chosenCards = classifyCards(chosenCards || cards.all);
+function _getBalancedGame(players, chosenCards) {
+    chosenCards = _classifyCards(chosenCards || cards.all);
     while (currentWeight < -1 || currentWeight > 1) {
-        setGame(players, chosenCards);
+        _setGame(players, chosenCards);
     }
 
     return {
@@ -38,57 +38,57 @@ function getBalancedGame(players, chosenCards) {
     };
 }
 
-function classifyCards(cards) {
-    var deck = { negatives : [], nonnegatives: [] };
-    cards.map(function(card){
-        if(card.value < 0)
+function _classifyCards(cards) {
+    var deck = { negatives: [], nonnegatives: [] };
+    cards.map(function (card) {
+        if (card.value < 0)
             for (var i = 0; i < card.amount; i++)
-                deck.negatives.push({role: card.role, value: card.value, amount: 1 });
+                deck.negatives.push({ role: card.role, value: card.value, amount: 1 });
         else
             for (var i = 0; i < card.amount; i++)
-                deck.nonnegatives.push({role: card.role, value: card.value, amount: 1 });
+                deck.nonnegatives.push({ role: card.role, value: card.value, amount: 1 });
     });
 
     return deck;
 }
 
-function setGame(players, chosenCards) {
-    resetValues(chosenCards);
+function _setGame(players, chosenCards) {
+    _resetValues(chosenCards);
     //get first card randomly
-    addCardToDeck(getRandom(0, 1));
+    _addCardToDeck(_getRandom(0, 1));
     players--;
 
     for (var i = 0; i < players; i++) {
-        addCardToDeck(currentWeight >= 0);
+        _addCardToDeck(currentWeight >= 0);
     }
 }
 
-function resetValues(chosenCards) {
+function _resetValues(chosenCards) {
     deck = {};
     currentWeight = 0;
     availableCards = JSON.parse(JSON.stringify(chosenCards));
 }
 
-function addCardToDeck(isNegative) {
+function _addCardToDeck(isNegative) {
     while (true) {
         if (isNegative) {
-            var rand = getRandom(0, availableCards.negatives.length - 1);
+            var rand = _getRandom(0, availableCards.negatives.length - 1);
             if (availableCards.negatives[rand].amount > 0) {
-                addRandomCard(availableCards.negatives[rand]);
+                _addRandomCard(availableCards.negatives[rand]);
                 break;
             }
         }
         else {
-            var rand = getRandom(0, availableCards.nonnegatives.length - 1);
+            var rand = _getRandom(0, availableCards.nonnegatives.length - 1);
             if (availableCards.nonnegatives[rand].amount > 0) {
-                addRandomCard(availableCards.nonnegatives[rand]);
+                _addRandomCard(availableCards.nonnegatives[rand]);
                 break;
             }
         }
     }
 }
 
-function addRandomCard(selectedCard) {
+function _addRandomCard(selectedCard) {
     currentWeight += selectedCard.value;
     selectedCard.amount--;
 
@@ -100,7 +100,7 @@ function addRandomCard(selectedCard) {
     }
 }
 
-function getRandom(min, max) {
+function _getRandom(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
