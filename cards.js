@@ -1,5 +1,3 @@
-var template = require('./templates');
-
 exports.all = [
     { role: "Wolf man", value: -9, amount: 1 },
     { role: "Big Bad Wolf", value: -9, amount: 1 },
