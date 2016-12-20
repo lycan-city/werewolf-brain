@@ -21,15 +21,21 @@ exports.getGameFromTemplate = function (players, template) {
 }
 
 function _getCardsFromTemplate(template) {
+    templateCards = templates.all[template];
     return cards.all.filter(function (card) {
-        return template.indexOf(card.role) >= 0;
+        return templateCards.indexOf(card.role) >= 0;
     });
 }
 
 function _getBalancedGame(players, chosenCards) {
     chosenCards = _classifyCards(chosenCards || cards.all);
-    while (currentWeight < -1 || currentWeight > 1) {
+    var flex = 1;
+    var tries = 0;
+    while (currentWeight < -1 * flex || currentWeight > 1 * flex) {
+        tries++;
         _setGame(players, chosenCards);
+        if (tries % 500 == 0) flex++;
+        if (tries > 5000) break;
     }
 
     return {
