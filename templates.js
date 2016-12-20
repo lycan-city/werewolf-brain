@@ -10,8 +10,8 @@ exports.all = {
         'Mayor'
     ],
     amateur: [
-        'Wereeolf',
-        'Wolf cub',
+        'Werewolf',
+        'Wolf Cub',
         'Villager',
         'Mayor',
         'Seer',
@@ -20,7 +20,7 @@ exports.all = {
         'Tanner'
     ],
     wolfpack: [
-        'Wereeolf',
+        'Werewolf',
         'Big Bad Wolf',
         'Wolf Cub',
         'Lone Wolf',
@@ -33,8 +33,8 @@ exports.all = {
         'Martyr'
     ],
     competent: [
-        'Wereeolf',
-        'Wolf cub',
+        'Werewolf',
+        'Wolf Cub',
         'Sorcerer',
         'Cursed',
         'Minion',
