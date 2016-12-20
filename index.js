@@ -6,7 +6,7 @@ var game = {
     weight : 100,
     players: 0
 };
-var candidate = {
+var gameCandite = {
     deck : {},
     weight : 100,
     players: 0
@@ -40,14 +40,14 @@ function _getBalancedGame(players, chosenCards) {
     chosenCards = _classifyCards(chosenCards || cards.all);
     var flex = 1;
     var tries = 0;
-    while (!allPlayers || game.weight < -1 * flex || game.weight > 1 * flex) {
+    while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
         tries++;
         _setGame(players, chosenCards);
-        if(candidate.players <= game.players) candidate = game;
+        if(gameCandite.players <= game.players) gameCandite = game;
         if (tries % 500 == 0) flex++;
         if (tries > 5000) break;
     }
-    return candidate;
+    return gameCandite;
 }
 
 function _classifyCards(cards) {
