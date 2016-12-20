@@ -78,16 +78,20 @@ function _resetValues(chosenCards) {
 function _addCardToDeck(isNegative) {
     while (true) {
         if (isNegative) {
+            if (availableCards.negatives.length < 1) break;
             var rand = _getRandom(0, availableCards.negatives.length - 1);
             if (availableCards.negatives[rand].amount > 0) {
                 _addRandomCard(availableCards.negatives[rand]);
+                availableCards.negatives.splice(rand, 1);
                 break;
             }
         }
         else {
+            if (availableCards.nonnegatives.length < 1) break;
             var rand = _getRandom(0, availableCards.nonnegatives.length - 1);
             if (availableCards.nonnegatives[rand].amount > 0) {
                 _addRandomCard(availableCards.nonnegatives[rand]);
+                availableCards.nonnegatives.splice(rand, 1);
                 break;
             }
         }
@@ -96,14 +100,8 @@ function _addCardToDeck(isNegative) {
 
 function _addRandomCard(selectedCard) {
     currentWeight += selectedCard.value;
-    selectedCard.amount--;
-
-    if (deck[selectedCard.role]) {
-        deck[selectedCard.role]++;
-    }
-    else {
-        deck[selectedCard.role] = 1;
-    }
+    if (deck[selectedCard.role]) deck[selectedCard.role]++;
+    else deck[selectedCard.role] = 1;
 }
 
 function _getRandom(min, max) {
