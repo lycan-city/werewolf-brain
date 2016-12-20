@@ -1,8 +1,17 @@
 var cards = require('./cards');
 var templates = require('./templates');
 var availableCards = {};
-var deck = {};
-var currentWeight = 100;
+var game = {
+    deck : {},
+    weight : 100,
+    players: 0
+};
+var candidate = {
+    deck : {},
+    weight : 100,
+    players: 0
+};
+var allPlayers = true;
 
 exports.getAllCards = function () {
     return cards.all;
@@ -31,17 +40,14 @@ function _getBalancedGame(players, chosenCards) {
     chosenCards = _classifyCards(chosenCards || cards.all);
     var flex = 1;
     var tries = 0;
-    while (currentWeight < -1 * flex || currentWeight > 1 * flex) {
+    while (!allPlayers || game.weight < -1 * flex || game.weight > 1 * flex) {
         tries++;
         _setGame(players, chosenCards);
+        if(candidate.players <= game.players) candidate = game;
         if (tries % 500 == 0) flex++;
         if (tries > 5000) break;
     }
-
-    return {
-        deck: deck,
-        weight: currentWeight
-    };
+    return candidate;
 }
 
 function _classifyCards(cards) {
@@ -65,20 +71,27 @@ function _setGame(players, chosenCards) {
     players--;
 
     for (var i = 0; i < players; i++) {
-        _addCardToDeck(currentWeight >= 0);
+        _addCardToDeck(game.weight >= 0);
     }
 }
 
 function _resetValues(chosenCards) {
-    deck = {};
-    currentWeight = 0;
+    game = {
+        deck : {},
+        weight : 0,
+        players: 0
+    };
+    allPlayers = true;
     availableCards = JSON.parse(JSON.stringify(chosenCards));
 }
 
 function _addCardToDeck(isNegative) {
     while (true) {
         if (isNegative) {
-            if (availableCards.negatives.length < 1) break;
+            if (availableCards.negatives.length < 1){
+                allPlayers = false;
+                break;
+            }
             var rand = _getRandom(0, availableCards.negatives.length - 1);
             if (availableCards.negatives[rand].amount > 0) {
                 _addRandomCard(availableCards.negatives[rand]);
@@ -87,7 +100,10 @@ function _addCardToDeck(isNegative) {
             }
         }
         else {
-            if (availableCards.nonnegatives.length < 1) break;
+            if (availableCards.nonnegatives.length < 1) {
+                allPlayers = false;
+                break;
+            }
             var rand = _getRandom(0, availableCards.nonnegatives.length - 1);
             if (availableCards.nonnegatives[rand].amount > 0) {
                 _addRandomCard(availableCards.nonnegatives[rand]);
@@ -99,9 +115,10 @@ function _addCardToDeck(isNegative) {
 }
 
 function _addRandomCard(selectedCard) {
-    currentWeight += selectedCard.value;
-    if (deck[selectedCard.role]) deck[selectedCard.role]++;
-    else deck[selectedCard.role] = 1;
+    game.weight += selectedCard.value;
+    game.players++;
+    if (game.deck[selectedCard.role]) game.deck[selectedCard.role]++;
+    else game.deck[selectedCard.role] = 1;
 }
 
 function _getRandom(min, max) {
