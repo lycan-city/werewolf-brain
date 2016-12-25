@@ -29,6 +29,24 @@ exports.getGameFromTemplate = function (players, template) {
     return _getBalancedGame(players, _getCardsFromTemplate(template));
 }
 
+exports.getChaosGame = function (players, chosenCards) {
+    return _getChaosGame(players, chosenCards);
+}
+
+function _getChaosGame(players, chosenCards) {
+    chosenCards = _classifyCards(chosenCards || cards.all);
+    var flex = 10;
+    var tries = 0;
+    while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
+        tries++;
+        _setGame(players, chosenCards);
+        if(gameCandite.players <= game.players) gameCandite = game;
+        if (tries % 500 == 0) flex++;
+        if (tries > 5000) break;
+    }
+    return gameCandite;
+}
+
 function _getCardsFromTemplate(template) {
     templateCards = templates.all[template];
     return cards.all.filter(function (card) {
