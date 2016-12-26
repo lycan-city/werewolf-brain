@@ -33,6 +33,10 @@ exports.getChaosGame = function (players, chosenCards) {
     return _getChaosGame(players, chosenCards);
 }
 
+exports.getChaosGameFromTemplate = function (players, template){
+    return _getChaosGame(players, _getCardsFromTemplate(template));
+}
+
 function _getChaosGame(players, chosenCards) {
     chosenCards = _classifyCards(chosenCards || cards.all);
     var flex = 10;
@@ -48,7 +52,7 @@ function _getChaosGame(players, chosenCards) {
 }
 
 function _getCardsFromTemplate(template) {
-    templateCards = templates.all[template];
+    templateCards = templates.all[template.toLowerCase()];
     return cards.all.filter(function (card) {
         return templateCards.indexOf(card.role) >= 0;
     });
