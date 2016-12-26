@@ -17,17 +17,17 @@ the players, the library will give you a game with the maximum
 number of players that could found in 5000 tries. 
 
 ## Templates
-#### Basic
+#### basic
 - Werewolves
 - Villagers
 
-#### Novice
+#### novice
 - Werewolves
 - Villagers
 - Seer
 - Mayor
 
-#### Amateur
+#### amateur
 - Werewolves
 - Wolf Cub
 - Villagers
@@ -37,7 +37,7 @@ number of players that could found in 5000 tries.
 - Prince
 - Tanner
 
-#### Wolfpack
+#### wolfpack
 - Werewolves
 - Big Bad Wolf
 - Wolf Cub
@@ -50,7 +50,7 @@ number of players that could found in 5000 tries.
 - Mayor
 - Martyr
 
-#### Competent
+#### competent
 - Werewolves
 - Wolf Cub
 - Sorcerer
@@ -164,12 +164,12 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
 The function ```getGameFromTemplate``` lets you start a new game
 with the template cards only. In this example we need a game for
 ***12*** players who only knows Werewolf, Villagers, Seer and Mayor
-cards. In this case, the ```Novice``` template is an excellent option.
+cards. In this case, the ```novice``` template is an excellent option.
 The function will return a game object.
 
     var wwb = require('./werewolf-brain/index.js');
     var players = 12;
-    var template = 'Novice';
+    var template = 'novice';
     var game = wwb.getGameFromTemplate(players, template);
 
 ### Create a new scenario using custom template or cards
