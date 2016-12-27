@@ -1,5 +1,7 @@
 var cards = require('./cards');
 var templates = require('./templates');
+const BALANCEDFLEX = 1;
+const CHAOSFLEX = 10;
 var availableCards = {};
 var game = {
     deck : {},
@@ -38,29 +40,14 @@ exports.getChaosGameFromTemplate = function (players, template){
 }
 
 function _getChaosGame(players, chosenCards) {
-    chosenCards = _classifyCards(chosenCards || cards.all);
-    var flex = 10;
-    var tries = 0;
-    while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
-        tries++;
-        _setGame(players, chosenCards);
-        if(gameCandite.players <= game.players) gameCandite = game;
-        if (tries % 500 == 0) flex++;
-        if (tries > 5000) break;
-    }
-    return gameCandite;
-}
-
-function _getCardsFromTemplate(template) {
-    templateCards = templates.all[template.toLowerCase()];
-    return cards.all.filter(function (card) {
-        return templateCards.indexOf(card.role) >= 0;
-    });
+    return (players, _classifyCards(chosenCards || cards.all), CHAOSFLEX);
 }
 
 function _getBalancedGame(players, chosenCards) {
-    chosenCards = _classifyCards(chosenCards || cards.all);
-    var flex = 1;
+    return (players, _classifyCards(chosenCards || cards.all), BALANCEDFLEX);
+}
+
+function _getGame(players, chosenCards, flex){
     var tries = 0;
     while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
         tries++;
@@ -134,6 +121,13 @@ function _addCardToDeck(isNegative) {
             }
         }
     }
+}
+
+function _getCardsFromTemplate(template) {
+    templateCards = templates.all[template.toLowerCase()];
+    return cards.all.filter(function (card) {
+        return templateCards.indexOf(card.role) >= 0;
+    });
 }
 
 function _addRandomCard(selectedCard) {
