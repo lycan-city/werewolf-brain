@@ -40,11 +40,11 @@ exports.getChaosGameFromTemplate = function (players, template){
 }
 
 function _getChaosGame(players, chosenCards) {
-    return (players, _classifyCards(chosenCards || cards.all), CHAOSFLEX);
+    return _getGame(players, _classifyCards(chosenCards || cards.all), CHAOSFLEX);
 }
 
 function _getBalancedGame(players, chosenCards) {
-    return (players, _classifyCards(chosenCards || cards.all), BALANCEDFLEX);
+    return _getGame(players, _classifyCards(chosenCards || cards.all), BALANCEDFLEX);
 }
 
 function _getGame(players, chosenCards, flex){
