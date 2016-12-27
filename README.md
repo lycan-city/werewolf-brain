@@ -16,8 +16,27 @@ limited. If the current deck of cards can't have a game with all
 the players, the library will give you a game with the maximum 
 number of players that could found in 5000 tries. 
 
-## Templates
-#### basic
+We use a game object for describing a scenario. This object contains 
+the number of players, the game weight and the deck itself. The game 
+weight gives you an idea of how balanced is the game. Positive weight 
+means a game in favor to the villagers, negatives means the opposite.
+
+### game Object
+Game for ***p*** players, weight ***w*** and the cards ( ***v*** 
+Villagers and ***f*** Werewolves, ***m*** masons, etc. )
+
+    var game = {
+        deck : {
+            'Villager' : v,
+            'Werewolf' : f,
+            'mason' : m
+        },
+        weight : w,
+        players : p
+    };
+
+### Templates
+#### Basic
 - Werewolves
 - Villagers
 
@@ -76,7 +95,7 @@ number of players that could found in 5000 tries.
 
 ## Examples
 ### Get all cards registered
-    var wwb = require('./werewolf-brain/index.js');
+    var wwb = require('./werewolf-brain');
     var cards = wwb.getAllCards();
 
 #### cards Array
@@ -140,25 +159,11 @@ number of players that could found in 5000 tries.
 The function ```getBalancedGame``` allows you to start a new game 
 using all the cards currently registered. In this example we are 
 starting a new game with ***8*** players. The function will return 
-a game object wich is described bellow.
+a game object wich is described above.
 
-    var wwb = require('./werewolf-brain/index.js');
+    var wwb = require('./werewolf-brain');
     var players = 8;
     var game = wwb.getBalancedGame(players);
-
-#### game Object
-Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and 
-***f*** Werewolves, ***m*** masons, etc. )
-
-    var game = {
-        deck : {
-            'Villager' : v,
-            'Werewolf' : f,
-            'mason' : m
-        },
-        weight : w,
-        players : p
-    };
 
 ### Create a new scenario using a template
 The function ```getGameFromTemplate``` lets you start a new game
@@ -167,7 +172,7 @@ with the template cards only. In this example we need a game for
 cards. In this case, the ```novice``` template is an excellent option.
 The function will return a game object.
 
-    var wwb = require('./werewolf-brain/index.js');
+    var wwb = require('./werewolf-brain');
     var players = 12;
     var template = 'novice';
     var game = wwb.getGameFromTemplate(players, template);
@@ -180,7 +185,7 @@ example we are adding another seer (normally 1), some aditional
 villagers (normally 20) and a new role **Van Helsing** this new role 
 chase vampires every night. The function will return a game object.
 
-    var wwb = require('./werewolf-brain/index.js');
+    var wwb = require('./werewolf-brain');
     var players = 17;
     var customCards = [
         { role: 'Vampire', value: -7, amount: 8 },
@@ -196,3 +201,50 @@ chase vampires every night. The function will return a game object.
         { role: 'Mason', value: 2, amount: 3 }
     ];
     var game = wwb.getBalancedGame(players, customCards);
+
+### Create new unfair scenario
+The function ```getChaosGame``` gives you the possibility  to start 
+a new game with a higher rate of unbalance using all cards currently 
+registered. In this example we are starting a new unfair game with
+***12*** players. The function will return a game object.
+
+    var wwb = require('./werewolf-brain');
+    var players = 12;
+    var game = wwb.getChaosGame(players);
+
+### Create a new unfair scenario using a template
+The function ```getChaosGameFromTemplate``` allows you to start a
+new unfair game with the template cards only. In this example we
+are creating an unfair game for ***9*** players who knows all 
+'Amateur' template cards. 
+
+    var wwb = require('./werewolf-brain');
+    var players = 9;
+    var template = 'Amateur';
+    var game = wwb.getChaosGame(players, template);
+
+### Create a new unfair scenario using custom template or cards
+The function ```getChaosGame``` allows you to start a new unfair game 
+using a custom deck. This feature works like ```getBalancedGame``` but
+creates an unfair game. In this example we are adding another martyr 
+(normally 1), some aditional werewolves (normally 12) and a new role 
+**Serial Killer** this new role visits a house and kills everyone every 
+night. The function will return a game object.
+
+    var wwb = require('./werewolf-brain');
+    var players = 22;
+    var customCards = [
+        { role: 'Vampire', value: -7, amount: 8 },
+        { role: 'Werewolf', value: -6, amount: 15 },
+        { role: 'Minion', value: -6, amount: 1 },
+        { role: 'Wolf Cub', value: -8, amount: 1 },
+        { role: 'Villager', value: 1, amount: 20 },
+        { role: 'Seer', value: 7, amount: 1 },
+        { role: 'Martyr', value: 3, amount: 2 },
+        { role: 'Serial Killer', value: -5, amount: 1 },
+        { role: 'Spellcaster', value: 1, amount: 1 },
+        { role: 'Tanner', value: 1, amount: 1 },
+        { role: 'Prince', value: 3, amount: 1 },
+        { role: 'Mason', value: 2, amount: 3 }
+    ];
+    var game = wwb.getChaosGame(players, customCards);
