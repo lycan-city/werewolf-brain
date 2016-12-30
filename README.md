@@ -7,7 +7,7 @@ library, check out the examples section.
 
 ## Installing
 If you use npm, ```npm install werewolf-brain```. Otherwise, 
-download the files from here and add them to the project.
+download the files from [here](https://github.com/wistcc/werewolf-brain "Github") and add them to the project.
 
 ## What does it do?
 Creates new scenarios based on the number of players, on a 
@@ -40,13 +40,13 @@ Villagers and ***f*** Werewolves, ***m*** masons, etc. )
 - Werewolves
 - Villagers
 
-#### novice
+#### Novice
 - Werewolves
 - Villagers
 - Seer
 - Mayor
 
-#### amateur
+#### Amateur
 - Werewolves
 - Wolf Cub
 - Villagers
@@ -56,7 +56,7 @@ Villagers and ***f*** Werewolves, ***m*** masons, etc. )
 - Prince
 - Tanner
 
-#### wolfpack
+#### Wolfpack
 - Werewolves
 - Big Bad Wolf
 - Wolf Cub
@@ -69,7 +69,7 @@ Villagers and ***f*** Werewolves, ***m*** masons, etc. )
 - Mayor
 - Martyr
 
-#### competent
+#### Competent
 - Werewolves
 - Wolf Cub
 - Sorcerer
@@ -95,7 +95,7 @@ Villagers and ***f*** Werewolves, ***m*** masons, etc. )
 
 ## Examples
 ### Get all cards registered
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var cards = wwb.getAllCards();
 
 #### cards Array
@@ -161,7 +161,7 @@ using all the cards currently registered. In this example we are
 starting a new game with ***8*** players. The function will return 
 a game object wich is described above.
 
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var players = 8;
     var game = wwb.getBalancedGame(players);
 
@@ -169,12 +169,12 @@ a game object wich is described above.
 The function ```getGameFromTemplate``` lets you start a new game
 with the template cards only. In this example we need a game for
 ***12*** players who only knows Werewolf, Villagers, Seer and Mayor
-cards. In this case, the ```novice``` template is an excellent option.
+cards. In this case, the ```Novice``` template is an excellent option.
 The function will return a game object.
 
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var players = 12;
-    var template = 'novice';
+    var template = 'Novice';
     var game = wwb.getGameFromTemplate(players, template);
 
 ### Create a new scenario using custom template or cards
@@ -185,7 +185,7 @@ example we are adding another seer (normally 1), some aditional
 villagers (normally 20) and a new role **Van Helsing** this new role 
 chase vampires every night. The function will return a game object.
 
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var players = 17;
     var customCards = [
         { role: 'Vampire', value: -7, amount: 8 },
@@ -208,7 +208,7 @@ a new game with a higher rate of unbalance using all cards currently
 registered. In this example we are starting a new unfair game with
 ***12*** players. The function will return a game object.
 
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var players = 12;
     var game = wwb.getChaosGame(players);
 
@@ -218,7 +218,7 @@ new unfair game with the template cards only. In this example we
 are creating an unfair game for ***9*** players who knows all 
 'Amateur' template cards. 
 
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var players = 9;
     var template = 'Amateur';
     var game = wwb.getChaosGame(players, template);
@@ -231,7 +231,7 @@ creates an unfair game. In this example we are adding another martyr
 **Serial Killer** this new role visits a house and kills everyone every 
 night. The function will return a game object.
 
-    var wwb = require('./werewolf-brain');
+    var wwb = require('werewolf-brain');
     var players = 22;
     var customCards = [
         { role: 'Vampire', value: -7, amount: 8 },
