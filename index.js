@@ -1,5 +1,4 @@
 var cards = require('./cards');
-var templates = require('./templates');
 
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
@@ -24,16 +23,12 @@ exports.getAllCards = function () {
     return cards.getAll();
 }
 
-exports.getAllTemplates = function () {
-    return templates.getAll();
-}
-
 exports.getBalancedGame = function (players, chosenCards) {
     return _getBalancedGame(players, chosenCards);
 }
 
 exports.getGameFromTemplate = function (players, template) {
-    return _getBalancedGame(players, _getCardsFromTemplate(template));
+    return _getBalancedGame(players, cards.fromTemplate(template));
 }
 
 exports.getChaosGame = function (players, chosenCards) {
@@ -41,7 +36,7 @@ exports.getChaosGame = function (players, chosenCards) {
 }
 
 exports.getChaosGameFromTemplate = function (players, template){
-    return _getChaosGame(players, _getCardsFromTemplate(template));
+    return _getChaosGame(players, cards.fromTemplate(template));
 }
 
 function _getChaosGame(players, chosenCards = cards.getAll()) {
@@ -126,13 +121,6 @@ function _addCardToDeck(isNegative) {
             }
         }
     }
-}
-
-function _getCardsFromTemplate(template) {
-    templateCards = templates.all[template.toLowerCase()];
-    return cards.getAll().filter(function (card) {
-        return templateCards.indexOf(card.role) >= 0;
-    });
 }
 
 function _addRandomCard(selectedCard) {

@@ -1,4 +1,10 @@
-exports.all = {
+exports.getAll = () => templates;
+
+exports.get = (template) => {
+    return templates[template];
+};
+
+const templates = {
     basic: [
         'Werewolf',
         'Villager',
