@@ -1,26 +1,31 @@
 var cards = require('./cards');
 var templates = require('./templates');
+
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
-var availableCards = {};
-var game = {
+
+let availableCards = {};
+
+let game = {
     deck : {},
     weight : 100,
     players: 0
 };
-var gameCandite = {
+
+let gameCandite = {
     deck : {},
     weight : 100,
     players: 0
 };
-var allPlayers = true;
+
+let allPlayers = true;
 
 exports.getAllCards = function () {
-    return cards.all;
+    return cards.getAll();
 }
 
 exports.getAllTemplates = function () {
-    return templates.all;
+    return templates.getAll();
 }
 
 exports.getBalancedGame = function (players, chosenCards) {
@@ -39,12 +44,12 @@ exports.getChaosGameFromTemplate = function (players, template){
     return _getChaosGame(players, _getCardsFromTemplate(template));
 }
 
-function _getChaosGame(players, chosenCards) {
-    return _getGame(players, _classifyCards(chosenCards || cards.all), CHAOSFLEX);
+function _getChaosGame(players, chosenCards = cards.getAll()) {
+    return _getGame(players, _classifyCards(chosenCards), CHAOSFLEX);
 }
 
-function _getBalancedGame(players, chosenCards) {
-    return _getGame(players, _classifyCards(chosenCards || cards.all), BALANCEDFLEX);
+function _getBalancedGame(players, chosenCards = cards.getAll()) {
+    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
 }
 
 function _getGame(players, chosenCards, flex){

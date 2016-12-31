@@ -1,4 +1,6 @@
-exports.all = [
+exports.getAll = () => cards;
+
+const cards  = [
     { role: 'Wolf Man', value: -9, amount: 1 },
     { role: 'Big Bad Wolf', value: -9, amount: 1 },
     { role: 'Wolf Cub', value: -8, amount: 1 },
