@@ -18,8 +18,7 @@ game with the maximum number of players that it could calculate in 5000 tries.
 
 We use a **game** object to describe a scenario. This object contains 
 the number of *players*, the game *weight* and the *deck* itself. The game 
-weight gives you an idea of how balanced is the game. Positive weight 
-means a game in favor to the Villagers, negatives means the opposite: a game in favor to the Werewolves.
+weight gives you an idea of how balanced is the game. Positive weight means a game in favor to the Villagers, negative means the opposite: a game in favor to the other non-Villagers cards.
 
 ### game Object
 Game for ***p*** players, weight ***w*** and the cards ( ***v*** 
