@@ -65,13 +65,17 @@ function _getGame(players, chosenCards, flex){
 }
 
 function _classifyCards(cards) {
-    if(!cards || !Array.isArray(cards) || cards.length === 0) 
-        return [];
+    var deck = { negatives: [], nonnegatives: [] };
+    cards.forEach(function (card) {
+        if (card.value < 0)
+            for (var i = 0; i < card.amount; i++)
+                deck.negatives.push({ role: card.role, value: card.value, amount: 1 });
+        else
+            for (var i = 0; i < card.amount; i++)
+                deck.nonnegatives.push({ role: card.role, value: card.value, amount: 1 });
+    });
 
-    return { 
-        negatives: cards.filter(c => c.value < 0), 
-        nonnegatives: cards.filter(c => c.value > 0) 
-    };
+    return deck;
 }
 
 function _setGame(players, chosenCards) {
@@ -126,7 +130,7 @@ function _addCardToDeck(isNegative) {
 
 function _getCardsFromTemplate(template) {
     templateCards = templates.all[template.toLowerCase()];
-    return cards.all.filter(function (card) {
+    return cards.getAll().filter(function (card) {
         return templateCards.indexOf(card.role) >= 0;
     });
 }
