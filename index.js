@@ -1,26 +1,31 @@
 var cards = require('./cards');
 var templates = require('./templates');
+
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
-var availableCards = {};
-var game = {
+
+let availableCards = {};
+
+let game = {
     deck : {},
     weight : 100,
     players: 0
 };
-var gameCandite = {
+
+let gameCandite = {
     deck : {},
     weight : 100,
     players: 0
 };
-var allPlayers = true;
+
+let allPlayers = true;
 
 exports.getAllCards = function () {
-    return cards.all;
+    return cards.getAll();
 }
 
 exports.getAllTemplates = function () {
-    return templates.all;
+    return templates.getAll();
 }
 
 exports.getBalancedGame = function (players, chosenCards) {
@@ -39,12 +44,12 @@ exports.getChaosGameFromTemplate = function (players, template){
     return _getChaosGame(players, _getCardsFromTemplate(template));
 }
 
-function _getChaosGame(players, chosenCards) {
-    return _getGame(players, _classifyCards(chosenCards || cards.all), CHAOSFLEX);
+function _getChaosGame(players, chosenCards = cards.getAll()) {
+    return _getGame(players, _classifyCards(chosenCards), CHAOSFLEX);
 }
 
-function _getBalancedGame(players, chosenCards) {
-    return _getGame(players, _classifyCards(chosenCards || cards.all), BALANCEDFLEX);
+function _getBalancedGame(players, chosenCards = cards.getAll()) {
+    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
 }
 
 function _getGame(players, chosenCards, flex){
@@ -61,7 +66,7 @@ function _getGame(players, chosenCards, flex){
 
 function _classifyCards(cards) {
     var deck = { negatives: [], nonnegatives: [] };
-    cards.map(function (card) {
+    cards.forEach(function (card) {
         if (card.value < 0)
             for (var i = 0; i < card.amount; i++)
                 deck.negatives.push({ role: card.role, value: card.value, amount: 1 });
@@ -125,7 +130,7 @@ function _addCardToDeck(isNegative) {
 
 function _getCardsFromTemplate(template) {
     templateCards = templates.all[template.toLowerCase()];
-    return cards.all.filter(function (card) {
+    return cards.getAll().filter(function (card) {
         return templateCards.indexOf(card.role) >= 0;
     });
 }
