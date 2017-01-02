@@ -6,7 +6,7 @@ exports.getAllTemplates = templates.getAll;
 
 exports.fromTemplate = (template) => {
     const templateCards = templates.get(template);
-    return cards.filter(c => !~templateCards.indexOf(c.role));
+    return cards.filter(c => ~templateCards.indexOf(c.role));
 }
 
 const cards  = [
