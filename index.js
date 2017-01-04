@@ -1,4 +1,6 @@
 var cards = require('./cards');
+var templates = require('./templates');
+var moderator = require('./moderator')
 
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
@@ -21,6 +23,14 @@ let allPlayers = true;
 
 exports.getAllCards = function () {
     return cards.getAll();
+}
+
+exports.getGameScript = function (game) {
+    return moderator.getScriptFromGame(game);
+}
+
+exports.getScriptFromDeck = function (deck) {
+    return moderator.getScriptFromDeck(deck);
 }
 
 exports.getBalancedGame = function (players, chosenCards) {
