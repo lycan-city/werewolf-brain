@@ -1,5 +1,94 @@
 var lang = require('./languages');
 
+var bindings = {
+    'Apprentice Seer': ['Apprentice Seer'],
+    'Aura Seer': ['Aura Seer'],
+    'Beholder': ['Beholder'],
+    'Big Bad Wolf': ['Big Bad Wolf', 'Werewolves'],
+    'Bloody Mary': ['Bloody Mary'],
+    'Bodyguard': ['Bodyguard'],
+    'Bogeyman': ['Bogeyman'],
+    'Chupacabra': ['Chupacabra'],
+    'Count Dracula': ['Count Dracula'],
+    'Cult Leader': ['Cult Leader'],
+    'Cupid': ['Cupid', 'Lovebirds'],
+    'Cursed': ['Cursed'],
+    'Dire Wolf': ['Dire Wolf', 'Werewolves'],
+    'Diseased': ['Diseased'],
+    'Doppelgänger': ['Doppelgänger'],
+    'Dream Wolf': ['Werewolves'],
+    'Drunk': ['Drunk'],
+    'Fortune Teller': ['Fortune Teller'],
+    'Fruit Brute': ['Fruit Brute', 'Werewolves'],
+    'Hoodlum': ['Hoodlum'],
+    'Hunter': ['Hunter'],
+    'Insomniac': ['Insomniac'],
+    'Leprechaun': ['Leprechaun'],
+    'Lone Wolf': ['Werewolves'],
+    'Lycan': ['Lycan'],
+    'Mason' : ['Mason', 'Meeting'],
+    'Minion': ['Minion'],
+    'Nostradamus' : ['Nostradamus'],
+    'Old Hag': ['Old Hag'],
+    'P.I.': ['P.I.'],
+    'Priest': ['Priest'],
+    'Seer': ['Seer'],
+    'Sorcerer': ['Sorcerer'],
+    'Spellcaster': ['Spellcaster'],
+    'The Count': ['The Count'],
+    'Tough Guy': ['Tough Guy'],
+    'Vampire': ['Vampire'],
+    'Werewolf': ['Werewolves'],
+    'Wild Child': ['Wild Child'],
+    'Witch': ['Witch'],
+    'Wolf Cub': ['Werewolves'],
+    'Wolf Man': ['Wolf Man', 'Werewolves'],
+    'Wolverine': ['Wolverine', 'Werewolves']
+};
+
+var secuence = [
+    'Lycan',
+    'Tough Guy',
+    'Cursed',
+    'Hunter',
+    'Fruit Brute',
+    'Apprentice Seer',
+    'Diseased', 
+    'Big Bad Wolf',
+    'Wolf Man',
+    'Minion',
+    'Cupid',
+    'Lovebirds',
+    'Doppelgänger', 
+    'Hoodlum', 
+    'Wild Child',
+    'Dire Wolf',
+    'Nostradamus',
+    'Mason',
+    'Bodyguard',
+    'Priest',
+    'Count Dracula',
+    'Cult Leader',
+    'Sorcerer',
+    'Vampire',
+    'Werewolves', 
+    'Bogeyman',
+    'Leprechaun', 
+    'Bloody Mary', 
+    'Chupacabra', 
+    'Witch', 
+    'Aura Seer', 
+    'Seer', 
+    'Fortune Teller', 
+    'Beholder', 
+    'The Count', 
+    'Insomniac',
+    'P.I.', 
+    'Old Hag', 
+    'Spellcaster', 
+    'Meeting'
+];
+
 exports.getScriptFromGame = function (game) {
     return _getScriptFromDeck(game.deck);
 }
@@ -10,63 +99,16 @@ exports.getScriptFromDeck = function (deck) {
 
 function _getScriptFromDeck (deck) {
     var script = '';
-
-    // To take note calls.
-    if(deck['Lycan']) script += ' - ' + lang.english['Lycan'] + '\n'; 
-    if(deck['Tough Guy']) script += ' - ' + lang.english['Tough Guy'] + '\n'; 
-    if(deck['Hunter']) script += ' - ' + lang.english['Hunter'] + '\n'; 
-    if(deck['Fruit Brute']) script += ' - ' + lang.english['Fruit Brute'] + '\n'; 
-    if(deck['Apprentice Seer']) script += ' - ' + lang.english['Apprentice Seer'] + '\n'; 
-    if(deck['Diseased']) script += ' - ' + lang.english['Diseased'] + '\n'; 
-    if(deck['Big Bad Wolf']) script += ' - ' + lang.english['Big Bad Wolf'] + '\n'; 
-
-    // Relationships
-    if(deck['Cupid']) {
-        script += ' - ' + lang.english['Cupid'] + '\n'; 
-        script += ' - ' + lang.english['Lovebirds'] + '\n'; 
-    }
-    if(deck['Doppelgänger']) script += ' - ' + lang.english['Doppelgänger'] + '\n'; 
-    if(deck['Hoodlum']) script += ' - ' + lang.english['Hoodlum'] + '\n'; 
-    if(deck['Wild Child']) script += ' - ' + lang.english['Wild Child'] + '\n'; 
-    if(deck['Dire Wolf']) script += ' - ' + lang.english['Dire Wolf'] + '\n'; 
-    if(deck['Nostradamus']) script += ' - ' + lang.english['Nostradamus'] + '\n'; 
-    if(deck['Mason']) script += ' - ' + lang.english['Mason'] + '\n'; 
-
-    // Protection + Non-Villagers Intelligence
-    if(deck['Bodyguard']) script += ' - ' + lang.english['Bodyguard'] + '\n'; 
-    if(deck['Priest']) script += ' - ' + lang.english['Priest'] + '\n'; 
-    if(deck['Count Dracula']) script += ' - ' + lang.english['Count Dracula'] + '\n'; 
-    if(deck['Cult Leader']) script += ' - ' + lang.english['Cult Leader'] + '\n'; 
-    if(deck['Sorcerer']) script += ' - ' + lang.english['Sorcerer'] + '\n'; 
-
-    // Attacks
-    if(deck['Vampire']) script += ' - ' + lang.english['Vampire'] + '\n'; 
-    if(deck['Big Bad Wolf'] 
-        || deck['Fruit Brute']
-        || deck['Werewolf'] 
-        || deck['Wolf Cub'] 
-        || deck['Dream Wolf'] 
-        || deck['Lone Wolf'] 
-        || deck['Dire Wolf'] 
-        || deck['Wolverine'] ) script += ' - ' + lang.english['Werewolves'] + '\n'; 
-    if(deck['Leprechaun']) script += ' - ' + lang.english['Leprechaun'] + '\n'; 
-    if(deck['Bloody Mary']) script += ' - ' + lang.english['Bloody Mary'] + '\n'; 
-    if(deck['Chupacabra']) script += ' - ' + lang.english['Chupacabra'] + '\n'; 
-    if(deck['Witch']) script += ' - ' + lang.english['Witch'] + '\n'; 
-
-    // Villagers Intelligence
-    if(deck['Aura Seer']) script += ' - ' + lang.english['Aura Seer'] + '\n'; 
-    if(deck['Seer']) script += ' - ' + lang.english['Seer'] + '\n'; 
-    if(deck['Fortune Teller']) script += ' - ' + lang.english['Fortune Teller'] + '\n'; 
-    if(deck['Beholder']) script += ' - ' + lang.english['Beholder'] + '\n'; 
-    if(deck['The Count']) script += ' - ' + lang.english['The Count'] + '\n'; 
-    if(deck['P.I.']) script += ' - ' + lang.english['P.I.'] + '\n'; 
-
-    // Day Off
-    if(deck['Old Hag']) script += ' - ' + lang.english['Old Hag'] + '\n'; 
-    if(deck['Spellcaster']) script += ' - ' + lang.english['Spellcaster'] + '\n'; 
-
-    if(deck['Meeting']) script += ' - ' + lang.english['Meeting'] + '\n';
-
+    var calls = new Set();
+    Object.keys(deck).forEach(function(role) {
+        if(bindings[role]) bindings[role].forEach(function (call) {
+            calls.add(call);
+        });
+    });
+    secuence.forEach(function (call){
+        if(calls.has(call)){
+            script += '- ' + lang.default[call] + '\n';
+        }
+    });
     return script;
 }
