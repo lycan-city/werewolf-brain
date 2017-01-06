@@ -16,7 +16,7 @@ exports.default = {
     'Doppelgänger': '*Doppelgänger, open your eyes, choose your role model.',
     'Drunk': '(Third night), open your eyes, give him his new role.',
     'Fortune Teller': 'Fortune Teller, check a player.',
-    'Fruit Brute': 'Fruit Brute open your eyes.',
+    'Fruit Brute': '*Fruit Brute, open your eyes.',
     'Hoodlum': '*Wake up Hoodlum, choose 2 players.',
     'Hunter': '*Hunter, open your eyes.',
     'Insomniac': 'Insomniac, there have been activity around you (tell with hands).',

@@ -25,10 +25,6 @@ exports.getAllCards = function () {
     return cards.getAll();
 }
 
-exports.getGameScript = function (game) {
-    return moderator.getScriptFromGame(game);
-}
-
 exports.getScriptFromDeck = function (deck) {
     return moderator.getScriptFromDeck(deck);
 }

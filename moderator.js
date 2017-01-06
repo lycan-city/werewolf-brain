@@ -89,10 +89,6 @@ var secuence = [
     'Meeting'
 ];
 
-exports.getScriptFromGame = function (game) {
-    return _getScriptFromDeck(game.deck);
-}
-
 exports.getScriptFromDeck = function (deck) {
     return _getScriptFromDeck(deck);
 }
