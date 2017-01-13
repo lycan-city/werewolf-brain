@@ -1,6 +1,5 @@
 var cards = require('./cards');
-var templates = require('./templates');
-var moderator = require('./moderator')
+var moderator = require('./moderator');
 
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
@@ -24,6 +23,8 @@ let allPlayers = true;
 exports.getAllCards = function () {
     return cards.getAll();
 }
+
+exports.getAllTemplates = cards.getAllTemplates;
 
 exports.getScriptFromDeck = function (deck) {
     return moderator.getScriptFromDeck(deck);
