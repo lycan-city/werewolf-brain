@@ -1,4 +1,5 @@
 var cards = require('./src/cards');
+var decks = require('./src/decks');
 var moderator = require('./src/moderator');
 
 const BALANCEDFLEX = 1;
@@ -24,7 +25,7 @@ exports.getAllCards = function () {
     return cards.getAll();
 }
 
-exports.getAllDeckss = cards.getAllDecks;
+exports.getAllDeckss = decks.getAll;
 
 exports.getScriptFromDeck = moderator.getScriptFromDeck;
 
