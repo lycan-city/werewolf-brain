@@ -1,11 +1,11 @@
-const templates = require('./templates');
+const decks = require('./decks');
 const cards = require('../data/cards');
 
 exports.getAll = () => cards;
 
-exports.getAllTemplates = templates.getAll;
+exports.getAllDecks = decks.getAll;
 
-exports.fromTemplate = (template) => {
-    const templateCards = templates.get(template) || [];
-    return cards.filter(c => ~templateCards.indexOf(c.role));
+exports.inDeck = (deckName) => {
+    const deck = decks.get(deckName) || [];
+    return cards.filter(c => ~deck.indexOf(c.role));
 }

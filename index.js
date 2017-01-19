@@ -24,7 +24,7 @@ exports.getAllCards = function () {
     return cards.getAll();
 }
 
-exports.getAllTemplates = cards.getAllTemplates;
+exports.getAllDeckss = cards.getAllDecks;
 
 exports.getScriptFromDeck = moderator.getScriptFromDeck;
 
@@ -32,16 +32,16 @@ exports.getBalancedGame = function (players, chosenCards) {
     return _getBalancedGame(players, chosenCards);
 }
 
-exports.getGameFromTemplate = function (players, template) {
-    return _getBalancedGame(players, cards.fromTemplate(template));
+exports.getGameFromDeck = function (players, deckName) {
+    return _getBalancedGame(players, cards.inDeck(deckName));
 }
 
 exports.getChaosGame = function (players, chosenCards) {
     return _getChaosGame(players, chosenCards);
 }
 
-exports.getChaosGameFromTemplate = function (players, template){
-    return _getChaosGame(players, cards.fromTemplate(template));
+exports.getChaosGameFromDeck = function (players, deckName){
+    return _getChaosGame(players, cards.inDeck(deckName));
 }
 
 function _getChaosGame(players, chosenCards = cards.getAll()) {
