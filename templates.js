@@ -1,7 +1,7 @@
 exports.getAll = () => templates;
 
 exports.get = (template) => {
-    return templates[template];
+    return templates[template.toLowerCase()];
 };
 
 const templates = {

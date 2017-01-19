@@ -1,4 +1,4 @@
-exports.default = {
+exports.english = {
     'Apprentice Seer': '*Apprentice Seer, open your eyes.',    
     'Aura Seer': 'Aura Seer open your eyes, check a player.',
     'Beholder': 'Beholder open your eyes, (point the player) this is the village seer.',
