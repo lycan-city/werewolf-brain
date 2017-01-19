@@ -1,6 +1,6 @@
 var lang = require('./languages');
 var bindings = require('./bindings');
-var secuence = require('./secuence');
+var sequence = require('./sequence');
 
 exports.getScriptFromDeck = function (deck, selectedLanguage) {
     var script = '';
@@ -12,7 +12,7 @@ exports.getScriptFromDeck = function (deck, selectedLanguage) {
             calls.add(call);
         });
     });
-    secuence.forEach(function (call){
+    sequence.forEach(function (call){
         if(calls.has(call)){
             script += '- ' + language[call] + '\n';
         }
