@@ -1,5 +1,5 @@
-var cards = require('./cards');
-var moderator = require('./moderator');
+var cards = require('./src/cards');
+var moderator = require('./src/moderator');
 
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;

@@ -7,8 +7,12 @@
     "werewolf"
   ],
   "authors": [
-    "wistcc <wistcc@gmail.com> http://winnercrespo.com", 
+    "wistcc <wistcc@gmail.com> http://winnercrespo.com",
     "vetom <tomasverasm@gmail.com>"
   ],
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "should": "^11.1.2"
+  }
 }

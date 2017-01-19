@@ -1,6 +1,6 @@
 var lang = require('./languages');
-var bindings = require('./bindings');
-var secuence = require('./secuence');
+var bindings = require('../data/bindings');
+var secuence = require('../data/secuence');
 
 exports.getScriptFromDeck = function (deck, selectedLanguage) {
     var script = '';
