@@ -10,5 +10,6 @@
     "wistcc <wistcc@gmail.com> http://winnercrespo.com", 
     "vetom <tomasverasm@gmail.com>"
   ],
+  "repository": "https://github.com/wistcc/werewolf-brain",
   "license": "ISC"
 }
