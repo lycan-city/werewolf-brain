@@ -13,7 +13,7 @@ let game = {
     players: 0
 };
 
-let gameCandite = {
+let gameCandidate = {
     deck : {},
     weight : 100,
     players: 0
@@ -58,11 +58,11 @@ function _getGame(players, chosenCards, flex){
     while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
         tries++;
         _setGame(players, chosenCards);
-        if(gameCandite.players <= game.players) gameCandite = game;
+        if(gameCandidate.players <= game.players) gameCandidate = game;
         if (tries % 500 == 0) flex++;
         if (tries > 5000) break;
     }
-    return gameCandite;
+    return gameCandidate;
 }
 
 function _classifyCards(cards) {
