@@ -1,4 +1,4 @@
-var lang = require('./languages');
+var script = require('./script');
 var bindings = require('../data/bindings');
 var secuence = require('../data/secuence');
 
