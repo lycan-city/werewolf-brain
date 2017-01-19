@@ -26,9 +26,7 @@ exports.getAllCards = function () {
 
 exports.getAllTemplates = cards.getAllTemplates;
 
-exports.getScriptFromDeck = function (deck) {
-    return moderator.getScriptFromDeck(deck);
-}
+exports.getScriptFromDeck = moderator.getScriptFromDeck;
 
 exports.getBalancedGame = function (players, chosenCards) {
     return _getBalancedGame(players, chosenCards);
