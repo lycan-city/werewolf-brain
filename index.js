@@ -31,29 +31,30 @@ exports.getScriptFromDeck = moderator.getScriptFromDeck;
 
 exports.getBalancedGame = function (players, chosenCards) {
     chosenCards = chosenCards || cards.getAll();
-    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
+    return _getGame(players, chosenCards, BALANCEDFLEX);
 }
 
 exports.getGameFromDeck = function (players, deckName) {
     var chosenCards = cards.inDeck(deckName);
-    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
+    return _getGame(players, chosenCards, BALANCEDFLEX);
 }
 
 exports.getChaosGame = function (players, chosenCards) {
     chosenCards = chosenCards || cards.getAll();
-    return _getGame(players, _classifyCards(chosenCards), CHAOSFLEX);
+    return _getGame(players, chosenCards, CHAOSFLEX);
 }
 
 exports.getChaosGameFromDeck = function (players, deckName) {
     var chosenCards = cards.inDeck(deckName);
-    return _getGame(players, _classifyCards(chosenCards), CHAOSFLEX);
+    return _getGame(players, chosenCards, CHAOSFLEX);
 }
 
-function _getGame(players, chosenCards, flex){
+function _getGame(players, chosenCards, flex) {
+    var classifiedCards =  _classifyCards(chosenCards);
     var tries = 0;
     while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
         tries++;
-        _setGame(players, chosenCards);
+        _setGame(players, classifiedCards);
         if(gameCandidate.players <= game.players) gameCandidate = game;
         if (tries % 500 == 0) flex++;
         if (tries > 5000) break;
