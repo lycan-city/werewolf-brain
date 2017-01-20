@@ -30,27 +30,23 @@ exports.getAllDeckss = decks.getAll;
 exports.getScriptFromDeck = moderator.getScriptFromDeck;
 
 exports.getBalancedGame = function (players, chosenCards) {
-    return _getBalancedGame(players, chosenCards);
+    chosenCards = chosenCards || cards.getAll();
+    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
 }
 
 exports.getGameFromDeck = function (players, deckName) {
-    return _getBalancedGame(players, cards.inDeck(deckName));
+    var chosenCards = cards.inDeck(deckName);
+    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
 }
 
 exports.getChaosGame = function (players, chosenCards) {
-    return _getChaosGame(players, chosenCards);
-}
-
-exports.getChaosGameFromDeck = function (players, deckName){
-    return _getChaosGame(players, cards.inDeck(deckName));
-}
-
-function _getChaosGame(players, chosenCards = cards.getAll()) {
+    chosenCards = chosenCards || cards.getAll();
     return _getGame(players, _classifyCards(chosenCards), CHAOSFLEX);
 }
 
-function _getBalancedGame(players, chosenCards = cards.getAll()) {
-    return _getGame(players, _classifyCards(chosenCards), BALANCEDFLEX);
+exports.getChaosGameFromDeck = function (players, deckName) {
+    var chosenCards = cards.inDeck(deckName);
+    return _getGame(players, _classifyCards(chosenCards), CHAOSFLEX);
 }
 
 function _getGame(players, chosenCards, flex){
