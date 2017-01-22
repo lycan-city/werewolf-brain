@@ -1,6 +1,6 @@
 const languages = require('./languages');
 const bindings = require('../data/bindings');
-const secuence = require('../data/secuence');
+const secuence = require('../data/sequence');
 
 exports.getScriptFromDeck = function (deck, selectedLanguage) {
     let script = '';
