@@ -1,21 +1,24 @@
-var script = require('./script');
-var bindings = require('../data/bindings');
-var secuence = require('../data/secuence');
+const languages = require('./languages');
+const bindings = require('../data/bindings');
+const secuence = require('../data/secuence');
 
 exports.getScriptFromDeck = function (deck, selectedLanguage) {
-    var script = '';
-    var calls = new Set();
-    var language = lang.english;
-    if (selectedLanguage.toLowerCase() == 'spanish') language = lang.spanish;
+    let script = '';
+    let calls = new Set();
+    
+    const language = languages.get(selectedLanguage);
+
     Object.keys(deck).forEach(function(role) {
         if(bindings[role]) bindings[role].forEach(function (call) {
             calls.add(call);
         });
     });
+
     secuence.forEach(function (call){
         if(calls.has(call)){
             script += '- ' + language[call] + '\n';
         }
     });
+    
     return script;
 }
