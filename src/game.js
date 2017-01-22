@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
 
 let game = {
-    deck : {},
-    weight : 100,
+    deck: {},
+    weight: 100,
     players: 0
 };
 
@@ -11,52 +13,51 @@ let allPlayers = true;
 let availableCards = {};
 
 let gameCandidate = {
-    deck : {},
-    weight : 100,
+    deck: {},
+    weight: 100,
     players: 0
 };
 
-exports.create = function(playerCount, deck, gameMode) {
-    return _getGame(playerCount, deck, gameMode == this.mode.NORMAL
+exports.create = function (playerCount, deck, gameMode) {
+    return _getGame(playerCount, deck, gameMode === this.mode.NORMAL
         ? BALANCEDFLEX
         : CHAOSFLEX);
-}
+};
 
 exports.mode = {
     CHAOS: 'CHAOS',
     NORMAL: 'NORMAL'
 };
 
-
-function _getGame(players, chosenCards, flex) {
-    var classifiedCards =  _classifyCards(chosenCards);
-    var tries = 0;
-    while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
-        tries++;
-        _setGame(players, classifiedCards);
-        if(gameCandidate.players <= game.players) gameCandidate = game;
-        if (tries % 500 == 0) flex++;
-        if (tries > 5000) break;
-    }
-    
-    return gameCandidate;
-}
-
 function _setGame(players, chosenCards) {
     _resetValues(chosenCards);
-    //get first card randomly
+    // get first card randomly
     _addCardToDeck(_getRandom(0, 1));
     players--;
 
-    for (var i = 0; i < players; i++) {
+    for (let i = 0; i < players; i++) {
         _addCardToDeck(game.weight >= 0);
     }
+}
+
+function _getGame(players, chosenCards, flex) {
+    const classifiedCards = _classifyCards(chosenCards);
+    let tries = 0;
+    while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
+        tries++;
+        _setGame(players, classifiedCards);
+        if (gameCandidate.players <= game.players) gameCandidate = game;
+        if (tries % 500 === 0) flex++;
+        if (tries > 5000) break;
+    }
+
+    return gameCandidate;
 }
 
 function _addCardToDeck(isNegative) {
     while (true) {
         if (isNegative) {
-            if (availableCards.negatives.length < 1){
+            if (availableCards.negatives.length < 1) {
                 allPlayers = false;
                 break;
             }
@@ -66,8 +67,7 @@ function _addCardToDeck(isNegative) {
                 availableCards.negatives.splice(rand, 1);
                 break;
             }
-        }
-        else {
+        } else {
             if (availableCards.nonnegatives.length < 1) {
                 allPlayers = false;
                 break;
@@ -91,14 +91,22 @@ function _addRandomCard(selectedCard) {
 }
 
 function _classifyCards(cards) {
-    var classifiedCards = { negatives: [], nonnegatives: [] };
-    cards.forEach(function (card) {
-        if (card.value < 0)
-            for (var i = 0; i < card.amount; i++)
-                classifiedCards.negatives.push({ role: card.role, value: card.value, amount: 1 });
-        else
-            for (var i = 0; i < card.amount; i++)
-                classifiedCards.nonnegatives.push({ role: card.role, value: card.value, amount: 1 });
+    const classifiedCards = { negatives: [], nonnegatives: [] };
+    cards.forEach((card) => {
+        if (card.value < 0) {
+            for (let i = 0; i < card.amount; i++) {
+                classifiedCards.negatives.push({
+                    role: card.role, value: card.value, amount: 1 });
+            }
+        } else {
+            for (let i = 0; i < card.amount; i++) {
+                classifiedCards.nonnegatives.push({
+                    role: card.role,
+                    value: card.value,
+                    amount: 1,
+                });
+            }
+        }
     });
 
     return classifiedCards;
@@ -106,8 +114,8 @@ function _classifyCards(cards) {
 
 function _resetValues(chosenCards) {
     game = {
-        deck : {},
-        weight : 0,
+        deck: {},
+        weight: 0,
         players: 0
     };
     allPlayers = true;
