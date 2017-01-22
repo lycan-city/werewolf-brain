@@ -3,6 +3,9 @@
   "version": "1.2.4",
   "description": "Werewolf game brain",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
   "keywords": [
     "werewolf"
   ],
