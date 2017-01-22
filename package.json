@@ -1,6 +1,6 @@
 {
   "name": "werewolf-brain",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Werewolf game brain",
   "main": "index.js",
   "keywords": [
@@ -10,7 +10,7 @@
     "wistcc <wistcc@gmail.com> http://winnercrespo.com", 
     "vetom <tomasverasm@gmail.com>",
     "mamodom <mamodom@gmail.com>",
-    "Willy Ovalle <willyovalle16@gmail.com>"
+    "wovalle <willyovalle16@gmail.com>"
   ],
   "repository": "https://github.com/wistcc/werewolf-brain",
   "license": "ISC",
