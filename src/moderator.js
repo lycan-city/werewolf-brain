@@ -1,6 +1,6 @@
 const languages = require('./languages');
 const bindings = require('../data/bindings');
-const secuence = require('../data/sequence');
+const sequence = require('../data/sequence');
 
 exports.getScriptFromDeck = function (deck, selectedLanguage) {
     let script = '';
@@ -14,7 +14,7 @@ exports.getScriptFromDeck = function (deck, selectedLanguage) {
         });
     });
 
-    secuence.forEach(function (call){
+    sequence.forEach(function (call){
         if(calls.has(call)){
             script += '- ' + language[call] + '\n';
         }
