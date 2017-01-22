@@ -1,7 +1,7 @@
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
 
-let gameO = {
+let game = {
     deck : {},
     weight : 100,
     players: 0
@@ -31,10 +31,10 @@ exports.mode = {
 function _getGame(players, chosenCards, flex) {
     var classifiedCards =  _classifyCards(chosenCards);
     var tries = 0;
-    while (!allPlayers || gameO.weight < -1 * flex || gameO.weight > flex) {
+    while (!allPlayers || game.weight < -1 * flex || game.weight > flex) {
         tries++;
         _setGame(players, classifiedCards);
-        if(gameCandidate.players <= gameO.players) gameCandidate = gameO;
+        if(gameCandidate.players <= game.players) gameCandidate = game;
         if (tries % 500 == 0) flex++;
         if (tries > 5000) break;
     }
@@ -49,7 +49,7 @@ function _setGame(players, chosenCards) {
     players--;
 
     for (var i = 0; i < players; i++) {
-        _addCardToDeck(gameO.weight >= 0);
+        _addCardToDeck(game.weight >= 0);
     }
 }
 
@@ -84,10 +84,10 @@ function _addCardToDeck(isNegative) {
 
 
 function _addRandomCard(selectedCard) {
-    gameO.weight += selectedCard.value;
-    gameO.players++;
-    if (gameO.deck[selectedCard.role]) gameO.deck[selectedCard.role]++;
-    else gameO.deck[selectedCard.role] = 1;
+    game.weight += selectedCard.value;
+    game.players++;
+    if (game.deck[selectedCard.role]) game.deck[selectedCard.role]++;
+    else game.deck[selectedCard.role] = 1;
 }
 
 function _classifyCards(cards) {
@@ -105,7 +105,7 @@ function _classifyCards(cards) {
 }
 
 function _resetValues(chosenCards) {
-    gameO = {
+    game = {
         deck : {},
         weight : 0,
         players: 0
