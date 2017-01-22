@@ -1,8 +1,7 @@
 {
   "extends": "airbnb-base",
   "rules": {
-    "indent":["error", 4],
-    "no-bitwise": "off",
+    "indent":[2, 4],
     "comma-dangle": "off"
   },
   "globals": {
