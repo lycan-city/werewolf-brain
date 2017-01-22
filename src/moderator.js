@@ -1,24 +1,17 @@
-const languages = require('./languages');
 const bindings = require('../data/bindings');
 const sequence = require('../data/sequence');
 
-exports.getScriptFromDeck = function (deck, selectedLanguage) {
-    let script = '';
+exports.getScriptFromDeck = function (deck) {
     let calls = new Set();
-    
-    const language = languages.get(selectedLanguage);
 
     Object.keys(deck).forEach(function(role) {
-        if(bindings[role]) bindings[role].forEach(function (call) {
-            calls.add(call);
-        });
+        if(bindings[role])
+            bindings[role].forEach(function (call) {
+                calls.add(call);
+            });
     });
 
-    sequence.forEach(function (call){
-        if(calls.has(call)){
-            script += '- ' + language[call] + '\n';
-        }
+    return sequence.filter(function (call) {
+        return calls.has(call);
     });
-    
-    return script;
 }
