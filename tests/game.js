@@ -19,29 +19,64 @@ function getRandom(minimum, maximun) {
     return Math.floor(Math.random() * ((max - min) + 1)) + min;
 }
 
-describe('Game tests', () => {
-    const players = getRandom(5, 18);
+describe('Game', () => {
+    const players = 25;
 
     it('should have both modes.', () => {
         game.mode.should.have.property('NORMAL');
         game.mode.should.have.property('CHAOS');
     });
 
+    let normalGame = {};
     it('should create a normal game.', () => {
-        const created = game.create(players, cards, game.mode.NORMAL);
-        created.should.have.property('deck');
-        created.should.have.property('weight').which.is.a.Number();
-        created.should.have.property('players').which.is.a.Number();
-        created.weight.should.be.within(-10, 10);
-        created.players.should.be.equal(players);
+        normalGame = game.create(players, cards, game.mode.NORMAL);
+        normalGame.should.not.be.empty();
     });
 
+    it('should contain the weight on each normal game created.', () => {
+        normalGame.should.have.property('weight').which.is.a.Number();
+    });
+
+    it('should give a weight within -10 and 10 on each normal game created.', () => {
+        normalGame.weight.should.be.within(-10, 10);
+    });
+
+    it('should contain a deck in each normal game created.', () => {
+        normalGame.should.have.property('deck');
+    });
+
+    it('should contain the amount of players on each normal game created.', () => {
+        normalGame.should.have.property('players').which.is.a.Number();
+    });
+
+    it('should includes the maximun number of players on each normal game created.', () => {
+        normalGame.players.should.be.equal(players);
+    });
+    normalGame = {};
+
+    let chaosGame = {};
     it('should create a chaos game.', () => {
-        const created = game.create(players, cards, game.mode.CHAOS);
-        created.should.have.property('deck');
-        created.should.have.property('weight').which.is.a.Number();
-        created.should.have.property('players').which.is.a.Number();
-        created.weight.should.be.within(-20, 20);
-        created.players.should.be.equal(players);
+        chaosGame = game.create(players, cards, game.mode.CHAOS);
+        chaosGame.should.not.be.empty();
+    });
+
+    it('should contain the weight on each chaos game created.', () => {
+        chaosGame.should.have.property('weight').which.is.a.Number();
+    });
+
+    it('should give a weight within -10 and 10 on each chaos game created.', () => {
+        chaosGame.weight.should.be.within(-10, 10);
+    });
+
+    it('should contain a deck in each chaos game created.', () => {
+        chaosGame.should.have.property('deck');
+    });
+
+    it('should contain the amount of players on each chaos game created.', () => {
+        chaosGame.should.have.property('players').which.is.a.Number();
+    });
+
+    it('should includes the maximun number of players on each chaos game created.', () => {
+        chaosGame.players.should.be.equal(players);
     });
 });
