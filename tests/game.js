@@ -13,12 +13,6 @@ const cards = [
     { role: 'Wolf Cub', value: -8, amount: 1 }
 ];
 
-function getRandom(minimum, maximun) {
-    const min = Math.ceil(minimum);
-    const max = Math.floor(maximun);
-    return Math.floor(Math.random() * ((max - min) + 1)) + min;
-}
-
 describe('Game', () => {
     const players = 25;
 
