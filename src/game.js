@@ -86,8 +86,8 @@ function _addCardToDeck(isNegative) {
 function _addRandomCard(selectedCard) {
     game.weight += selectedCard.value;
     game.players++;
-    if (game.deck[selectedCard.role]) game.deck[selectedCard.role]++;
-    else game.deck[selectedCard.role] = 1;
+    if (game.deck[selectedCard.key]) game.deck[selectedCard.key]++;
+    else game.deck[selectedCard.key] = 1;
 }
 
 function _classifyCards(cards) {
@@ -96,12 +96,12 @@ function _classifyCards(cards) {
         if (card.value < 0) {
             for (let i = 0; i < card.amount; i++) {
                 classifiedCards.negatives.push({
-                    role: card.role, value: card.value, amount: 1 });
+                    key: card.key, value: card.value, amount: 1 });
             }
         } else {
             for (let i = 0; i < card.amount; i++) {
                 classifiedCards.nonnegatives.push({
-                    role: card.role,
+                    key: card.key,
                     value: card.value,
                     amount: 1,
                 });
