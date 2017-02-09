@@ -4,9 +4,9 @@ const sequence = require('../data/sequence');
 function getScriptFromDeck(deck) {
     const calls = new Set();
 
-    Object.keys(deck).forEach((role) => {
-        if (bindings[role]) {
-            bindings[role].forEach((call) => {
+    Object.keys(deck).forEach((key) => {
+        if (bindings[key]) {
+            bindings[key].forEach((call) => {
                 calls.add(call);
             });
         }
