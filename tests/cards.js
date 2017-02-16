@@ -11,7 +11,6 @@ describe('Cards', () => {
     it('should be in correct format each.', () => {
         const allCards = cards.getAll();
         allCards.forEach((card) => {
-            card.should.have.property('role').which.is.a.String();
             card.should.have.property('value').which.is.a.Number();
             card.should.have.property('amount').which.is.a.Number();
         });
@@ -23,14 +22,14 @@ describe('Cards', () => {
 
     it('should contain all cards in deck', () => {
         const amateurDeck = [
-            { role: 'Mayor', value: 2, amount: 1 },
-            { role: 'Prince', value: 3, amount: 1 },
-            { role: 'Seer', value: 7, amount: 1 },
-            { role: 'Tanner', value: 1, amount: 1 },
-            { role: 'Villager', value: 1, amount: 20 },
-            { role: 'Werewolf', value: -6, amount: 12 },
-            { role: 'Witch', value: 4, amount: 1 },
-            { role: 'Wolf Cub', value: -8, amount: 1 }
+            { key: 'mayor', value: 2, amount: 1 },
+            { key: 'prince', value: 3, amount: 1 },
+            { key: 'seer', value: 7, amount: 1 },
+            { key: 'tanner', value: 1, amount: 1 },
+            { key: 'villager', value: 1, amount: 20 },
+            { key: 'werewolf', value: -6, amount: 12 },
+            { key: 'witch', value: 4, amount: 1 },
+            { key: 'wolf_cub', value: -8, amount: 1 }
         ];
 
         cards.inDeck('amateur').should.deepEqual(amateurDeck);
