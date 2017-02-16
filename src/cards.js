@@ -5,5 +5,5 @@ exports.getAll = () => cards;
 
 exports.inDeck = (deckName) => {
     const deck = decks.get(deckName) || [];
-    return cards.filter(c => deck.includes(c.role));
+    return cards.filter(c => deck.includes(c.key));
 };
