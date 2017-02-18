@@ -1,6 +1,6 @@
 {
   "name": "werewolf-brain",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Werewolf game brain",
   "main": "index.js",
   "scripts": {
