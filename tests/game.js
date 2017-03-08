@@ -22,8 +22,9 @@ describe('Game', () => {
     });
 
     let normalGame = {};
+    const language = 'en';
     it('should create a normal game.', () => {
-        normalGame = game.create(players, cards, game.mode.NORMAL);
+        normalGame = game.create(players, language, cards, game.mode.NORMAL);
         normalGame.should.not.be.empty();
     });
 
@@ -50,7 +51,7 @@ describe('Game', () => {
 
     let chaosGame = {};
     it('should create a chaos game.', () => {
-        chaosGame = game.create(players, cards, game.mode.CHAOS);
+        chaosGame = game.create(players, language, cards, game.mode.CHAOS);
         chaosGame.should.not.be.empty();
     });
 

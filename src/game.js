@@ -1,3 +1,5 @@
+const languages = require('./languages');
+
 const BALANCEDFLEX = 1;
 const CHAOSFLEX = 10;
 const SUCCESS = 1;
@@ -98,7 +100,7 @@ function classifyCards(cards) {
     return classifiedCards;
 }
 
-function getGame(players, chosenCards, flexibility) {
+function getGame(players, language, chosenCards, flexibility) {
     const classifiedCards = classifyCards(chosenCards);
     let flex = flexibility;
     let tries = 0;
@@ -109,12 +111,12 @@ function getGame(players, chosenCards, flexibility) {
         if (tries % 500 === 0) flex++;
         if (tries > 5000) break;
     }
-
+    gameCandidate.deck = languages.translateDeck(gameCandidate.deck, language);
     return gameCandidate;
 }
 
-exports.create = function create(playerCount, deck, gameMode) {
-    return getGame(playerCount, deck, gameMode === this.mode.NORMAL
+exports.create = function create(playerCount, language, deck, gameMode) {
+    return getGame(playerCount, language, deck, gameMode === this.mode.NORMAL
         ? BALANCEDFLEX
         : CHAOSFLEX);
 };

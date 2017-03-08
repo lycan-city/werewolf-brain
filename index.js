@@ -7,22 +7,22 @@ function getAllCards() {
     return cards.getAll();
 }
 
-function getBalancedGame(players, chosenCards = cards.getAll()) {
-    return game.create(players, chosenCards, game.mode.NORMAL);
+function getBalancedGame(players, language = 'en', chosenCards = cards.getAll()) {
+    return game.create(players, language, chosenCards, game.mode.NORMAL);
 }
 
-function getGameFromDeck(players, deckName) {
+function getGameFromDeck(players, language = 'en', deckName) {
     const chosenCards = cards.inDeck(deckName);
-    return game.create(players, chosenCards, game.mode.NORMAL);
+    return game.create(players, language, chosenCards, game.mode.NORMAL);
 }
 
-function getChaosGame(players, chosenCards = cards.getAll()) {
-    return game.create(players, chosenCards, game.mode.CHAOS);
+function getChaosGame(players, language = 'en', chosenCards = cards.getAll()) {
+    return game.create(players, language, chosenCards, game.mode.CHAOS);
 }
 
-function getChaosGameFromDeck(players, deckName) {
+function getChaosGameFromDeck(players, language = 'en', deckName) {
     const chosenCards = cards.inDeck(deckName);
-    return game.create(players, chosenCards, game.mode.CHAOS);
+    return game.create(players, language, chosenCards, game.mode.CHAOS);
 }
 
 exports.getAllCards = getAllCards;
