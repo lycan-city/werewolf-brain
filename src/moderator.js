@@ -1,18 +1,21 @@
 const bindings = require('../data/bindings');
 const sequence = require('../data/sequence');
+const languages = require('../data/translations');
 
-function getScriptFromDeck(deck) {
-    const calls = new Set();
-
-    Object.keys(deck).forEach((key) => {
-        if (bindings[key]) {
-            bindings[key].forEach((call) => {
-                calls.add(call);
+function getScriptFromDeck(deck, lang = 'en') {
+    const roles = new Set();
+    deck.forEach((card) => {
+        if (bindings[card.key]) {
+            bindings[card.key].forEach((call) => {
+                roles.add(call);
             });
         }
     });
 
-    return sequence.filter(call => calls.has(call));
+    const seq = sequence.filter(call => roles.has(call));
+    const pack = languages[lang].calls;
+
+    return seq.map(key => pack[key]);
 }
 
 exports.getScriptFromDeck = getScriptFromDeck;
