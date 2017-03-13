@@ -11,7 +11,7 @@ function getBalancedGame(players, language = 'en', chosenCards = cards.getAll())
     return game.create(players, language, chosenCards, game.mode.NORMAL);
 }
 
-function getGameFromDeck(players, language = 'en', deckName) {
+function getGameFromDeck(players, deckName, language = 'en') {
     const chosenCards = cards.inDeck(deckName);
     return game.create(players, language, chosenCards, game.mode.NORMAL);
 }
@@ -20,7 +20,7 @@ function getChaosGame(players, language = 'en', chosenCards = cards.getAll()) {
     return game.create(players, language, chosenCards, game.mode.CHAOS);
 }
 
-function getChaosGameFromDeck(players, language = 'en', deckName) {
+function getChaosGameFromDeck(players, deckName, language = 'en') {
     const chosenCards = cards.inDeck(deckName);
     return game.create(players, language, chosenCards, game.mode.CHAOS);
 }
