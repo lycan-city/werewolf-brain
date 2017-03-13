@@ -27,6 +27,7 @@ function getChaosGameFromDeck(players, language = 'en', deckName) {
 
 exports.getAllCards = getAllCards;
 exports.getAllDecks = decks.getAll;
+exports.getInDeck = decks.getInDeck;
 exports.getScriptFromDeck = moderator.getScriptFromDeck;
 exports.getBalancedGame = getBalancedGame;
 exports.getGameFromDeck = getGameFromDeck;
