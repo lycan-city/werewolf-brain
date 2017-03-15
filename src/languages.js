@@ -1,6 +1,7 @@
 const languages = require('../data/translations');
 
 exports.get = (lang = 'en') => languages[lang] || {};
+exports.getLanguages = () => Object.keys(languages);
 exports.translateDeck = function translateDeck(deck, lang = 'en') {
     const pack = languages[lang];
     const cards = Object.keys(deck);
