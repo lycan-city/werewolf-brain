@@ -19,161 +19,204 @@ give you a game with the maximum number of players that it could calculate in 50
 tries.
 
 We use a **game** object to describe a scenario. This object contains the number
-of *players*, the game *weight* and the *deck* itself. The game weight gives you
-an idea of how balanced is the game. Positive weight means a game in favor to the
-Villagers, negative means the opposite: a game in favor to the other non-Villagers
-cards.
+of *players*, the game *weight*, the selected language pack *lang* and the *deck*
+itself. The game weight gives you an idea of how balanced is the game. Positive
+weight means a game in favor to the Villagers, negative means the opposite: a game
+in favor to the other non-Villagers cards. The deck is an array of cards, you can
+find the details in the next section.
 
 ### game Object
-Game for ***p*** players, weight ***w*** and the cards ( ***v***
-Villagers and ***f*** Werewolves, ***m*** masons, etc. )
+Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
+***f*** Werewolves, ***m*** masons, etc. ). Each card has a *role* and a
+*description*, which depends on the selected language pack ***en***.
 ```javascript
     const game = {
-        deck : {
-            'Villager' : v,
-            'Werewolf' : f,
-            'mason' : m
-        },
+        deck : [
+            { key: 'villager', amount: v, role: 'Villager', description: 'Villager description'},
+            { key: 'werewolf', amount: f, role: 'Werewolf', description: 'Werewolf description'},
+            { key: 'mason', amount: f, role: 'Mason', description: 'Mason description'}
+        ],
+        lang: en,
         weight : w,
         players : p
     };
 ```
 ### Templates
 #### Basic
-- Werewolves
-- Villagers
+- 20 Villagers
+- 12 Werewolves
 
 #### Novice
-- Werewolves
-- Villagers
-- Seer
-- Mayor
+- 1 Mayor
+- 1 Seer
+- 20 Villagers
+- 12 Werewolves
 
 #### Amateur
-- Werewolves
-- Wolf Cub
-- Villagers
-- Mayor
-- Seer
-- Witch
-- Prince
-- Tanner
+- 1 Mayor
+- 1 Prince
+- 1 Seer
+- 1 Tanner
+- 20 Villagers
+- 12 Werewolves
+- 1 Witch
+- 1 Wolf Cub
 
 #### Wolfpack
-- Werewolves
-- Big Bad Wolf
-- Wolf Cub
-- Lone Wolf
-- Fruit Brute
-- Dream Wolf
-- Villagers
-- Seer
-- Prince
-- Mayor
-- Martyr
+- 1 Big Bad Wolf
+- 1 Dream Wolf
+- 1 Fruit Brute
+- 1 Lone Wolf
+- 1 Martyr
+- 1 Mayor
+- 1 Prince
+- 1 Seer
+- 20 Villagers
+- 12 Werewolves
+- 1 Wolf Cub
 
 #### Competent
-- Werewolves
-- Wolf Cub
-- Sorcerer
-- Cursed
-- Minion
-- Wild Child
-- Villagers
-- Mayor
-- Seer
-- Witch
-- Prince
-- Cult Leader
-- Cupid
-- Diseased
-- Doppelgänger
-- Lycan
-- Spellcaster
-- Tanner
-- Mason
-- Bodyguard
-- Apprentice Seer
-- Drunk
+- 1 Apprentice Seer
+- 1 Bodyguard
+- 1 Cult Leader
+- 1 Cupid
+- 1 Cursed
+- 1 Diseased
+- 1 Doppelgänger
+- 1 Drunk
+- 1 Lycan
+- 3 Mason
+- 1 Mayor
+- 1 Minion
+- 1 Prince
+- 1 Seer
+- 1 Sorcerer
+- 1 Spellcaster
+- 1 Tanner
+- 20 Villagers
+- 12 Werewolves
+- 1 Wild Child
+- 1 Witch
+- 1 Wolf Cub
+
+#### Vampires
+- 1 Cursed
+- 1 Dire Wolf
+- 1 Drunk
+- 3 Mason
+- 1 Mayor
+- 1 Prince
+- 1 Seer
+- 1 Sorcerer
+- 1 Spellcaster
+- 1 Tanner
+- 8 Vampire
+- 20 Villager
+- 1 Virginia Woolf
+- 12 Werewolf
+- 1 Witch
+- 1 Wolf Cub
 
 ## Examples
 ### Get all template registered
 ```javascript
     const wwb = require('werewolf-brain');
-    const templates = wwb.getAllTemplates();
+    const templates = wwb.getAllDecks();
 ```
 ### Get all cards registered
-```javascript   
+```javascript
     const wwb = require('werewolf-brain');
     const cards = wwb.getAllCards();
 ```
 #### cards Array
 ```javascript
-    const cards = [ 
-        { role: 'Wolf Man', value: -9, amount: 1 },
-        { role: 'Big Bad Wolf', value: -9, amount: 1 },
-        { role: 'Wolf Cub', value: -8, amount: 1 },
-        { role: 'Vampire', value: -7, amount: 8 },
-        { role: 'Bogeyman', value: -6, amount: 1 },
-        { role: 'Minion', value: -6, amount: 1 },
-        { role: 'Werewolf', value: -6, amount: 12 },
-        { role: 'Dream Wolf', value: -5, amount: 1 },
-        { role: 'Lone Wolf', value: -4, amount: 1 },
-        { role: 'Fruit Brute', value: -3, amount: 1 },
-        { role: 'Sorcerer', value: -3, amount: 1 },
-        { role: 'Cursed', value: -3, amount: 1 },
-        { role: 'Count Dracula', value: -2, amount: 1 },
-        { role: 'Cupid', value: -2, amount: 1 },
-        { role: 'Doppelgänger', value: -2, amount: 1 },
-        { role: 'Sasquatch', value: -2, amount: 1 },
-        { role: 'Lycan', value: -1, amount: 1 },
-        { role: 'Pacifist', value: -1, amount: 1 },
-        { role: 'Old Man', value: 0, amount: 1 },
-        { role: 'Hoodlum', value: 0, amount: 1 },
-        { role: 'Little Girl', value: 0, amount: 1 },
-        { role: 'Wild Child', value: 0, amount: 1 },
-        { role: 'Moderator', value: 0, amount: 1 },
-        { role: 'Villager', value: 1, amount: 20 },
-        { role: 'Old Hag', value: 1, amount: 1 },
-        { role: 'Cult Leader', value: 1, amount: 1 },
-        { role: 'Spellcaster', value: 1, amount: 1 },
-        { role: 'Tanner', value: 1, amount: 1 },
-        { role: 'Bloody Mary', value: 1, amount: 1 },
-        { role: 'Nostradamus', value: 1, amount: 1 },
-        { role: 'Beeholder', value: 2, amount: 1 },
-        { role: 'Ghost', value: 2, amount: 1 },
-        { role: 'Village Idiot', value: 2, amount: 1 },
-        { role: 'Mason', value: 2, amount: 3 },
-        { role: 'Mayor', value: 2, amount: 1 },
-        { role: 'Troublemaker', value: 2, amount: 1 },
-        { role: 'Bodyguard', value: 3, amount: 1 },
-        { role: 'Diseased', value: 3, amount: 1 },
-        { role: 'Hunter', value: 3, amount: 1 },
-        { role: 'Insomniac', value: 3, amount: 1 },
-        { role: 'Martyr', value: 3, amount: 1 },
-        { role: 'P.I.', value: 3, amount: 1 },
-        { role: 'Priest', value: 3, amount: 1 },
-        { role: 'Prince', value: 3, amount: 1 },
-        { role: 'Tough Guy', value: 3, amount: 1 },
-        { role: 'Thing', value: 3, amount: 1 },
-        { role: 'Drunk', value: 3, amount: 1 },
-        { role: 'Apprentice Seer', value: 4, amount: 1 },
-        { role: 'Witch', value: 4, amount: 1 },
-        { role: 'Chupacabra', value: 4, amount: 1 },
-        { role: 'The Count', value: 5, amount: 1 },
-        { role: 'Leprechaun', value: 5, amount: 1 },
-        { role: 'Seer', value: 7, amount: 1 } 
+    const cards = [
+        { "key": "apprentice_seer", "value": 4, "amount": 1 },
+        { "key": "aura_seer", "value": 3, "amount": 1 },
+        { "key": "beholder", "value": 2, "amount": 1 },
+        { "key": "big_bad_wolf", "value": -9, "amount": 1 },
+        { "key": "bloody_mary", "value": 1, "amount": 1 },
+        { "key": "bodyguard", "value": 3, "amount": 1 },
+        { "key": "bogeyman", "value": -6, "amount": 1 },
+        { "key": "chupacabra", "value": 4, "amount": 1 },
+        { "key": "count_dracula", "value": -2, "amount": 1 },
+        { "key": "cult_leader", "value": 1, "amount": 1 },
+        { "key": "cupid", "value": -2, "amount": 1 },
+        { "key": "cursed", "value": -3, "amount": 1 },
+        { "key": "dire_wolf", "value": -4, "amount": 1 },
+        { "key": "diseased", "value": 3, "amount": 1 },
+        { "key": "doppelganger", "value": -2, "amount": 1 },
+        { "key": "dream_wolf", "value": -5, "amount": 1 },
+        { "key": "drunk", "value": 3, "amount": 1 },
+        { "key": "fortune_teller", "value": 0, "amount": 1 },
+        { "key": "fruit_brute", "value": -3, "amount": 1 },
+        { "key": "ghost", "value": 2, "amount": 1 },
+        { "key": "hoodlum", "value": 0, "amount": 1 },
+        { "key": "hunter", "value": 3, "amount": 1 },
+        { "key": "insomniac", "value": 3, "amount": 1 },
+        { "key": "leprechaun", "value": 5, "amount": 1 },
+        { "key": "little_girl", "value": 0, "amount": 1 },
+        { "key": "lone_wolf", "value": -4, "amount": 1 },
+        { "key": "lycan", "value": -1, "amount": 1 },
+        { "key": "mayor", "value": 2, "amount": 1 },
+        { "key": "mason", "value": 2, "amount": 3 },
+        { "key": "martyr", "value": 3, "amount": 1 },
+        { "key": "minion", "value": -6, "amount": 1 },
+        { "key": "moderator", "value": 0, "amount": 1 },
+        { "key": "nostradamus", "value": 1, "amount": 1 },
+        { "key": "old_hag", "value": 1, "amount": 1 },
+        { "key": "old_man", "value": 0, "amount": 1 },
+        { "key": "pacifist", "value": -1, "amount": 1 },
+        { "key": "p_i", "value": 3, "amount": 1 },
+        { "key": "priest", "value": 3, "amount": 1 },
+        { "key": "prince", "value": 3, "amount": 1 },
+        { "key": "sasquatch", "value": -2, "amount": 1 },
+        { "key": "seer", "value": 7, "amount": 1 },
+        { "key": "sorcerer", "value": -3, "amount": 1 },
+        { "key": "spellcaster", "value": 1, "amount": 1 },
+        { "key": "tanner", "value": 1, "amount": 1 },
+        { "key": "the_count", "value": 5, "amount": 1 },
+        { "key": "thing", "value": 3, "amount": 1 },
+        { "key": "tough_guy", "value": 3, "amount": 1 },
+        { "key": "troublemaker", "value": 2, "amount": 1 },
+        { "key": "vampire", "value": -7, "amount": 8 },
+        { "key": "village_idiot", "value": 2, "amount": 1 },
+        { "key": "villager", "value": 1, "amount": 20 },
+        { "key": "virginia_woolf", "value": -2, "amount": 1 },
+        { "key": "werewolf", "value": -6, "amount": 12 },
+        { "key": "wild_child", "value": 0, "amount": 1 },
+        { "key": "witch", "value": 4, "amount": 1 },
+        { "key": "wolf_cub", "value": -8, "amount": 1 },
+        { "key": "wolf_man", "value": -9, "amount": 1 },
+        { "key": "wolverine", "value": -4, "amount": 1 }
     ];
 ```
+
+### Get available language packs
+```javascript
+    const wwb = require('werewolf-brain');
+    const languages = wwb.getLanguages();
+```
+
 ### Create new scenario
-The function `getBalancedGame` allows you to start a new game using all the
-cards currently registered. In this example we are starting a new game with
-***8*** players. The function will return a game object which is described above.
+The function `getBalancedGame` allows you to start a new game using all the cards
+currently registered and the default language which is English (en). In this example
+we are starting a new game with ***8*** players. The function will return a game
+object which is described above.
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 8;
     const game = wwb.getBalancedGame(players);
 ```
+
+You can create a new scenario using different languages. The next example creates
+a game in Spanish.
+```javascript
+    const wwb = require('werewolf-brain');
+    const players = 8;
+    const game = wwb.getBalancedGame(players, 'es');
+```
+
 ### Night calls
 The function ```getScriptFromDeck``` gives you the calls you need at night to
 moderate a game.
@@ -184,17 +227,26 @@ moderate a game.
     const calls = wwb.getScriptFromDeck(game.deck);
 ```
 
+If you need the calls in another language, pass the desired as follows.
+```javascript
+    const wwb = require('werewolf-brain');
+    const players = 8;
+    const game = wwb.getBalancedGame(players);
+    const calls = wwb.getScriptFromDeck(game.deck, 'es');
+```
+
 ### Create a new scenario using a template
-The function `getGameFromTemplate` lets you start a new game with only the
+The function `getGameFromDeck` lets you start a new game with only the
 template cards. In this example we need a game for ***12*** players who only know
 about the cards of Werewolves, Villagers, Seer and Mayor cards. In this case,
 which is intended for new players, the `Novice` template is an excellent option.
 The function will return a game object.
+
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 12;
     const template = 'Novice';
-    const game = wwb.getGameFromTemplate(players, template);
+    const game = wwb.getGameFromDeck(players, template);
 ```
 
 ### Create a new scenario using custom template or cards
@@ -204,23 +256,27 @@ the ones included in a single bundle. In this example we are adding another seer
 (normally 1), some aditional villagers (normally 20) and a new role **Van Helsing**
 (this new role has the ability to chase vampires every night). The function will
 return a game object.
+
+*Note: using this function requires an update to the language pack when new cards*
+*are added. For each new card, add the role and the description in the desired*
+*language.*
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 17;
     const customCards = [
-        { role: 'Vampire', value: -7, amount: 8 },
-        { role: 'Werewolf', value: -6, amount: 12 },
-        { role: 'Minion', value: -6, amount: 1 },
-        { role: 'Wolf Cub', value: -8, amount: 1 },
-        { role: 'Villager', value: 1, amount: 30 },
-        { role: 'Seer', value: 7, amount: 2 },
-        { role: 'Van Helsing', value: 6, amount: 1 },
-        { role: 'Spellcaster', value: 1, amount: 1 },
-        { role: 'Tanner', value: 1, amount: 1 },
-        { role: 'Prince', value: 3, amount: 1 },
-        { role: 'Mason', value: 2, amount: 3 }
+        { "key": "mason", "value": 2, "amount": 3 },
+        { "key": "minion", "value": -6, "amount": 1 },
+        { "key": "prince", "value": 3, "amount": 1 },
+        { "key": "seer", "value": 7, "amount": 1 },
+        { "key": "spellcaster", "value": 1, "amount": 1 },
+        { "key": "tanner", "value": 1, "amount": 1 },
+        { "key": "vampire", "value": -7, "amount": 8 },
+        { "key": "van_helsing", "value": 6, "amount": 1 },
+        { "key": "villager", "value": 1, "amount": 30 },
+        { "key": "werewolf", "value": -6, "amount": 12 },
+        { "key": "wolf_cub", "value": -8, "amount": 1 },
     ];
-    const game = wwb.getBalancedGame(players, customCards);
+    const game = wwb.getBalancedGame(players, 'en',  customCards);
 ```
 
 ### Create new unfair scenario
@@ -229,19 +285,23 @@ higher rate of unbalance using all cards currently registered. In this example w
 are starting a new unfair game with ***12*** players. The function will return a
 game object.
 
+```javascript
     const wwb = require('werewolf-brain');
     const players = 12;
     const game = wwb.getChaosGame(players);
+```
 
 ### Create a new unfair scenario using a template
-The function `getChaosGameFromTemplate` allows you to start a new unfair game
+The function `getChaosGameFromDeck` allows you to start a new unfair game
 with the template cards only. In this example we are creating an unfair game for
 ***9*** players who know all 'Amateur' template cards.
 
+```javascript
     const wwb = require('werewolf-brain');
     const players = 9;
     const template = 'Amateur';
-    const game = wwb.getChaosGame(players, template);
+    const game = wwb.getChaosGameFromDeck(players, template);
+```
 
 ### Create a new unfair scenario using custom template or cards
 The function `getChaosGame` allows you to start a new unfair game using a custom
@@ -250,22 +310,25 @@ this example we are adding another martyr (normally 1), some aditional Werewolve
 (normally 12) and a new role **Serial Killer** this new role visits a house and
 kills everyone every night. The function will return a game object.
 
+*Note: using this function requires an update to the language pack when new cards*
+*are added. For each new card, add the role and the description in the desired*
+*language.*
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 22;
     const customCards = [
-        { role: 'Vampire', value: -7, amount: 8 },
-        { role: 'Werewolf', value: -6, amount: 15 },
-        { role: 'Minion', value: -6, amount: 1 },
-        { role: 'Wolf Cub', value: -8, amount: 1 },
-        { role: 'Villager', value: 1, amount: 20 },
-        { role: 'Seer', value: 7, amount: 1 },
-        { role: 'Martyr', value: 3, amount: 2 },
-        { role: 'Serial Killer', value: -5, amount: 1 },
-        { role: 'Spellcaster', value: 1, amount: 1 },
-        { role: 'Tanner', value: 1, amount: 1 },
-        { role: 'Prince', value: 3, amount: 1 },
-        { role: 'Mason', value: 2, amount: 3 }
+        { "key": "martyr", "value": 3, "amount": 2 },
+        { "key": "mason", "value": 2, "amount": 3 },
+        { "key": "minion", "value": -6, "amount": 1 },
+        { "key": "prince", "value": 3, "amount": 1 },
+        { "key": "seer", "value": 7, "amount": 1 },
+        { "key": "serial_killer", "value": -5, "amount": 1 },
+        { "key": "spellcaster", "value": 1, "amount": 1 },
+        { "key": "tanner", "value": 1, "amount": 1 },
+        { "key": "vampire", "value": -7, "amount": 8 },
+        { "key": "villager", "value": 1, "amount": 20 },
+        { "key": "werewolf", "value": -6, "amount": 18 },
+        { "key": "wolf_cub", "value": -8, "amount": 1 },
     ];
-    const game = wwb.getChaosGame(players, customCards);
+    const game = wwb.getChaosGame(players, 'en', customCards);
 ```
