@@ -25,7 +25,7 @@ weight means a game in favor to the Villagers, negative means the opposite: a ga
 in favor to the other non-Villagers cards. The deck is an array of cards, you can
 find the details in the next section.
 
-### game Object
+### Game Object
 Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
 ***f*** Werewolves, ***m*** masons, etc. ). Each card has a *role* and a
 *description*, which depends on the selected language pack ***en***.
@@ -123,72 +123,74 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
     const wwb = require('werewolf-brain');
     const templates = wwb.getAllDecks();
 ```
+
 ### Get all cards registered
 ```javascript
     const wwb = require('werewolf-brain');
     const cards = wwb.getAllCards();
 ```
-#### cards Array
+
+#### Cards Array
 ```javascript
     const cards = [
-        { "key": "apprentice_seer", "value": 4, "amount": 1 },
-        { "key": "aura_seer", "value": 3, "amount": 1 },
-        { "key": "beholder", "value": 2, "amount": 1 },
-        { "key": "big_bad_wolf", "value": -9, "amount": 1 },
-        { "key": "bloody_mary", "value": 1, "amount": 1 },
-        { "key": "bodyguard", "value": 3, "amount": 1 },
-        { "key": "bogeyman", "value": -6, "amount": 1 },
-        { "key": "chupacabra", "value": 4, "amount": 1 },
-        { "key": "count_dracula", "value": -2, "amount": 1 },
-        { "key": "cult_leader", "value": 1, "amount": 1 },
-        { "key": "cupid", "value": -2, "amount": 1 },
-        { "key": "cursed", "value": -3, "amount": 1 },
-        { "key": "dire_wolf", "value": -4, "amount": 1 },
-        { "key": "diseased", "value": 3, "amount": 1 },
-        { "key": "doppelganger", "value": -2, "amount": 1 },
-        { "key": "dream_wolf", "value": -5, "amount": 1 },
-        { "key": "drunk", "value": 3, "amount": 1 },
-        { "key": "fortune_teller", "value": 0, "amount": 1 },
-        { "key": "fruit_brute", "value": -3, "amount": 1 },
-        { "key": "ghost", "value": 2, "amount": 1 },
-        { "key": "hoodlum", "value": 0, "amount": 1 },
-        { "key": "hunter", "value": 3, "amount": 1 },
-        { "key": "insomniac", "value": 3, "amount": 1 },
-        { "key": "leprechaun", "value": 5, "amount": 1 },
-        { "key": "little_girl", "value": 0, "amount": 1 },
-        { "key": "lone_wolf", "value": -4, "amount": 1 },
-        { "key": "lycan", "value": -1, "amount": 1 },
-        { "key": "mayor", "value": 2, "amount": 1 },
-        { "key": "mason", "value": 2, "amount": 3 },
-        { "key": "martyr", "value": 3, "amount": 1 },
-        { "key": "minion", "value": -6, "amount": 1 },
-        { "key": "moderator", "value": 0, "amount": 1 },
-        { "key": "nostradamus", "value": 1, "amount": 1 },
-        { "key": "old_hag", "value": 1, "amount": 1 },
-        { "key": "old_man", "value": 0, "amount": 1 },
-        { "key": "pacifist", "value": -1, "amount": 1 },
-        { "key": "p_i", "value": 3, "amount": 1 },
-        { "key": "priest", "value": 3, "amount": 1 },
-        { "key": "prince", "value": 3, "amount": 1 },
-        { "key": "sasquatch", "value": -2, "amount": 1 },
-        { "key": "seer", "value": 7, "amount": 1 },
-        { "key": "sorcerer", "value": -3, "amount": 1 },
-        { "key": "spellcaster", "value": 1, "amount": 1 },
-        { "key": "tanner", "value": 1, "amount": 1 },
-        { "key": "the_count", "value": 5, "amount": 1 },
-        { "key": "thing", "value": 3, "amount": 1 },
-        { "key": "tough_guy", "value": 3, "amount": 1 },
-        { "key": "troublemaker", "value": 2, "amount": 1 },
-        { "key": "vampire", "value": -7, "amount": 8 },
-        { "key": "village_idiot", "value": 2, "amount": 1 },
-        { "key": "villager", "value": 1, "amount": 20 },
-        { "key": "virginia_woolf", "value": -2, "amount": 1 },
-        { "key": "werewolf", "value": -6, "amount": 12 },
-        { "key": "wild_child", "value": 0, "amount": 1 },
-        { "key": "witch", "value": 4, "amount": 1 },
-        { "key": "wolf_cub", "value": -8, "amount": 1 },
-        { "key": "wolf_man", "value": -9, "amount": 1 },
-        { "key": "wolverine", "value": -4, "amount": 1 }
+        { "key": "apprentice_seer", "value": 4 },
+        { "key": "aura_seer", "value": 3 },
+        { "key": "beholder", "value": 2 },
+        { "key": "big_bad_wolf", "value": -9 },
+        { "key": "bloody_mary", "value": 1 },
+        { "key": "bodyguard", "value": 3 },
+        { "key": "bogeyman", "value": -6 },
+        { "key": "chupacabra", "value": 4 },
+        { "key": "count_dracula", "value": -2 },
+        { "key": "cult_leader", "value": 1 },
+        { "key": "cupid", "value": -2 },
+        { "key": "cursed", "value": -3 },
+        { "key": "dire_wolf", "value": -4 },
+        { "key": "diseased", "value": 3 },
+        { "key": "doppelganger", "value": -2 },
+        { "key": "dream_wolf", "value": -5 },
+        { "key": "drunk", "value": 3 },
+        { "key": "fortune_teller", "value": 0 },
+        { "key": "fruit_brute", "value": -3 },
+        { "key": "ghost", "value": 2 },
+        { "key": "hoodlum", "value": 0 },
+        { "key": "hunter", "value": 3 },
+        { "key": "insomniac", "value": 3 },
+        { "key": "leprechaun", "value": 5 },
+        { "key": "little_girl", "value": 0 },
+        { "key": "lone_wolf", "value": -4 },
+        { "key": "lycan", "value": -1 },
+        { "key": "mayor", "value": 2 },
+        { "key": "mason", "value": 2 },
+        { "key": "martyr", "value": 3 },
+        { "key": "minion", "value": -6 },
+        { "key": "moderator", "value": 0 },
+        { "key": "nostradamus", "value": 1 },
+        { "key": "old_hag", "value": 1 },
+        { "key": "old_man", "value": 0 },
+        { "key": "pacifist", "value": -1 },
+        { "key": "p_i", "value": 3 },
+        { "key": "priest", "value": 3 },
+        { "key": "prince", "value": 3 },
+        { "key": "sasquatch", "value": -2 },
+        { "key": "seer", "value": 7 },
+        { "key": "sorcerer", "value": -3 },
+        { "key": "spellcaster", "value": 1 },
+        { "key": "tanner", "value": 1 },
+        { "key": "the_count", "value": 5 },
+        { "key": "thing", "value": 3 },
+        { "key": "tough_guy", "value": 3 },
+        { "key": "troublemaker", "value": 2 },
+        { "key": "vampire", "value": -7 },
+        { "key": "village_idiot", "value": 2 },
+        { "key": "villager", "value": 1 },
+        { "key": "virginia_woolf", "value": -2 },
+        { "key": "werewolf", "value": -6 },
+        { "key": "wild_child", "value": 0 },
+        { "key": "witch", "value": 4 },
+        { "key": "wolf_cub", "value": -8 },
+        { "key": "wolf_man", "value": -9 },
+        { "key": "wolverine", "value": -4  }
     ];
 ```
 
