@@ -12,7 +12,6 @@ describe('Cards', () => {
         const allCards = cards.getAll();
         allCards.forEach((card) => {
             card.should.have.property('value').which.is.a.Number();
-            card.should.have.property('amount').which.is.a.Number();
         });
     });
 

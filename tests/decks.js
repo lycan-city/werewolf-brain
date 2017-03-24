@@ -13,7 +13,12 @@ describe('Decks', () => {
     });
 
     it('should return a deck.', () => {
-        const noviceDeck = ['mayor', 'seer', 'villager', 'werewolf'];
+        const noviceDeck = {
+            mayor: 1,
+            seer: 1,
+            villager: 20,
+            werewolf: 12
+        };
         decks.get('Novice').should.deepEqual(noviceDeck);
     });
 });
