@@ -9,7 +9,11 @@ describe('Cards', () => {
     });
 
     it('should be in correct format.', () => {
-        cards.getAll().should.be.type('object');
+        const allCards = cards.getAll();
+        allCards.should.be.type('object');
+        Object.keys(allCards).forEach((c) => {
+            allCards[c].should.be.type('number');
+        });
     });
 
     it("should return an empty array if deck doesn't exists", () => {
