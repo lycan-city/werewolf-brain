@@ -26,6 +26,11 @@ function getChaosGameFromDeck(players, deckName, language = 'en') {
     return game.create(players, language, chosenCards, game.mode.CHAOS);
 }
 
+function getGameFromCustomDeck(players, deck, language = 'en') {
+    const chosenCards = cards.inCustomDeck(deck);
+    return game.create(players, language, chosenCards, game.mode.NORMAL);
+}
+
 exports.getAllCards = getAllCards;
 exports.getAllDecks = decks.getAll;
 exports.getInDeck = decks.get;
@@ -36,3 +41,4 @@ exports.getChaosGame = getChaosGame;
 exports.getChaosGameFromDeck = getChaosGameFromDeck;
 exports.getLanguages = languages.getLanguages;
 exports.translateDeck = languages.translateDeck;
+exports.getGameFromCustomDeck = getGameFromCustomDeck;
