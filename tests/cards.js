@@ -8,11 +8,8 @@ describe('Cards', () => {
         cards.getAll().should.be.equal(cardsData);
     });
 
-    it('should be in correct format each.', () => {
-        const allCards = cards.getAll();
-        allCards.forEach((card) => {
-            card.should.have.property('value').which.is.a.Number();
-        });
+    it('should be in correct format.', () => {
+        cards.getAll().should.be.type('object');
     });
 
     it("should return an empty array if deck doesn't exists", () => {
