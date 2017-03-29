@@ -26,5 +26,8 @@
     "glob": "^7.1.1",
     "mocha": "^3.2.0",
     "should": "^11.1.2"
+  },
+  "dependencies": {
+    "assert": "^1.4.1"
   }
 }
