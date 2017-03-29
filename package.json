@@ -2,8 +2,10 @@
   "name": "werewolf-brain",
   "version": "1.5.0",
   "description": "Werewolf game brain",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
+    "build": "babel index.js src --presets babel-preset-es2015 --out-dir dist",
+    "prepublish": "npm run build",
     "test": "mocha tests --recursive"
   },
   "keywords": [
@@ -18,6 +20,8 @@
   "repository": "https://github.com/wistcc/werewolf-brain",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
     "eslint": "^3.14.0",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",

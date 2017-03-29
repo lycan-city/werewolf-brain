@@ -1,4 +1,4 @@
-const decks = require('../data/decks');
+const decks = require('./data/decks');
 
 exports.getAll = () => decks;
 

@@ -1,6 +1,6 @@
-const bindings = require('../data/bindings');
-const sequence = require('../data/sequence');
-const languages = require('../data/translations');
+const bindings = require('./data/bindings');
+const sequence = require('./data/sequence');
+const languages = require('./data/translations');
 
 function getScriptFromDeck(deck, lang = 'en') {
     const roles = new Set();
