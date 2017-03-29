@@ -16,13 +16,13 @@ exports.translateDeck = languages.translateDeck;
 exports.getGame = (players, options) => {
     const language = options.language || 'en';
     const mode = options.mode || game.mode.NORMAL;
-    const deck = options.deck || decks.get.all;
-    let deckName = options.deckName || 'custom';
-    deckName = deckName.toLowerCase();
+    const deck = options.deck || decks.get('all');
+    const deckName = options.deckName || 'custom';
+    const currentDeck = decks.get(deckName);
 
     assert(players > 0, 'Players must be greater than 0.');
-    assert(!decks[deckName] && deckName !== 'custom', `Deck ${deckName} is not defined.`);
+    assert(!currentDeck && deckName !== 'custom', `Deck ${deckName} is not defined.`);
 
-    if (decks[deckName]) return game.create(players, language, cards.inDeck(deckName), mode);
+    if (currentDeck) return game.create(players, language, cards.inDeck(currentDeck), mode);
     return game.create(players, language, cards.inCustomDeck(deck), mode);
 };
