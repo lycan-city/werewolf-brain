@@ -26,13 +26,15 @@ function getChaosGameFromDeck(players, deckName, language = 'en') {
     return game.create(players, language, chosenCards, game.mode.CHAOS);
 }
 
-exports.getAllCards = getAllCards;
-exports.getAllDecks = decks.getAll;
-exports.getInDeck = decks.get;
-exports.getScriptFromDeck = moderator.getScriptFromDeck;
-exports.getBalancedGame = getBalancedGame;
-exports.getGameFromDeck = getGameFromDeck;
-exports.getChaosGame = getChaosGame;
-exports.getChaosGameFromDeck = getChaosGameFromDeck;
-exports.getLanguages = languages.getLanguages;
-exports.translateDeck = languages.translateDeck;
+export default {
+    getAllCards,
+    getAllDecks: decks.getAll,
+    getInDeck: decks.get,
+    getScriptFromDeck: moderator.getScriptFromDeck,
+    getBalancedGame,
+    getGameFromDeck,
+    getChaosGame,
+    getChaosGameFromDeck,
+    getLanguages: languages.getLanguages,
+    translateDeck: languages.translateDeck
+};
