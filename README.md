@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/wistcc/werewolf-brain.svg?style=svg)](https://circleci.com/gh/wistcc/werewolf-brain)
 # Werewolf-Brain
 **Werewolf-Brain** (or **wwb**) is a JavaScript library for the creation of
 *scenarios* to play the party card game
