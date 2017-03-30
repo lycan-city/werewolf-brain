@@ -1,3 +1,5 @@
+[![forthebadge](http://forthebadge.com/images/badges/gluten-free.svg)](http://forthebadge.com)
+
 [![Build Status](https://travis-ci.org/wistcc/werewolf-brain.svg?branch=master)](https://travis-ci.org/wistcc/werewolf-brain)
 
 # Werewolf-Brain
