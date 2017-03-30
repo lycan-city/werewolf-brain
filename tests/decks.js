@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars*/
+/* eslint-disable no-unused-expressions*/
 const should = require('should');
 const decks = require('../src/decks');
 const decksData = require('../src/data/decks');
@@ -8,8 +8,8 @@ describe('Decks', () => {
         decks.getAll().should.be.equal(decksData);
     });
 
-    it("should return an emtpy array if deck doesn't exitst.", () => {
-        decks.get('f4k3').should.deepEqual([]);
+    it("should return undefined if deck doesn't exitst.", () => {
+        should(decks.get('f4k3')).be.undefined;
     });
 
     it('should return a deck.', () => {

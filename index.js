@@ -1,40 +1,28 @@
+const assert = require('assert');
 const cards = require('./src/cards');
 const decks = require('./src/decks');
 const moderator = require('./src/moderator');
 const game = require('./src/game');
 const languages = require('./src/languages');
 
-function getAllCards() {
-    return cards.getAll();
-}
+exports.getCards = cards.getAll;
+exports.getDecks = decks.getAll;
+exports.gameModes = game.mode;
+exports.getDeck = decks.get;
+exports.getScriptFromDeck = moderator.getScriptFromDeck;
+exports.getLanguages = languages.getLanguages;
+exports.translateDeck = languages.translateDeck;
 
-function getBalancedGame(players, language = 'en', chosenCards = cards.getAll()) {
-    return game.create(players, language, chosenCards, game.mode.NORMAL);
-}
+exports.getGame = (players, options) => {
+    const language = options.language || 'en';
+    const mode = options.mode || game.mode.NORMAL;
+    const deck = options.deck || decks.get('all');
+    const deckName = options.deckName || 'custom';
+    const currentDeck = decks.get(deckName);
 
-function getGameFromDeck(players, deckName, language = 'en') {
-    const chosenCards = cards.inDeck(deckName);
-    return game.create(players, language, chosenCards, game.mode.NORMAL);
-}
+    assert(players > 0, 'Players must be greater than 0.');
+    assert(!currentDeck && deckName !== 'custom', `Deck ${deckName} is not defined.`);
 
-function getChaosGame(players, language = 'en', chosenCards = cards.getAll()) {
-    return game.create(players, language, chosenCards, game.mode.CHAOS);
-}
-
-function getChaosGameFromDeck(players, deckName, language = 'en') {
-    const chosenCards = cards.inDeck(deckName);
-    return game.create(players, language, chosenCards, game.mode.CHAOS);
-}
-
-export default {
-    getAllCards,
-    getAllDecks: decks.getAll,
-    getInDeck: decks.get,
-    getScriptFromDeck: moderator.getScriptFromDeck,
-    getBalancedGame,
-    getGameFromDeck,
-    getChaosGame,
-    getChaosGameFromDeck,
-    getLanguages: languages.getLanguages,
-    translateDeck: languages.translateDeck
+    if (currentDeck) return game.create(players, language, cards.inDeck(currentDeck), mode);
+    return game.create(players, language, cards.inCustomDeck(deck), mode);
 };

@@ -2,7 +2,7 @@ const bindings = require('./data/bindings');
 const sequence = require('./data/sequence');
 const languages = require('./data/translations');
 
-function getScriptFromDeck(deck, lang = 'en') {
+exports.getScriptFromDeck = (deck, lang = 'en') => {
     const roles = new Set();
     deck.forEach((card) => {
         if (bindings[card.key]) {
@@ -16,6 +16,4 @@ function getScriptFromDeck(deck, lang = 'en') {
     const pack = languages[lang].calls;
 
     return seq.map(key => pack[key]);
-}
-
-exports.getScriptFromDeck = getScriptFromDeck;
+};

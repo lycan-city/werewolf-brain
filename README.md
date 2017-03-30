@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wistcc/werewolf-brain.svg?branch=master)](https://travis-ci.org/wistcc/werewolf-brain)
+
 # Werewolf-Brain
 **Werewolf-Brain** (or **wwb**) is a JavaScript library for the creation of
 *scenarios* to play the party card game

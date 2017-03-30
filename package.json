@@ -1,6 +1,6 @@
 {
   "name": "werewolf-brain",
-  "version": "1.5.0",
+  "version": "2.0.0-rc.2",
   "description": "Werewolf game brain",
   "main": "./dist/index.js",
   "scripts": {
@@ -34,5 +34,8 @@
     "mocha": "^3.2.0",
     "should": "^11.1.2",
     "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "assert": "^1.4.1"
   }
 }

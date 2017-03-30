@@ -11,3 +11,9 @@ exports.inDeck = (deckName) => {
         amount: deck[k]
     }));
 };
+
+exports.inCustomDeck = deck => Object.keys(cards).filter(k => deck[k]).map(k => ({
+    key: k,
+    value: cards[k],
+    amount: deck[k]
+}));
