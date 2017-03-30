@@ -1,4 +1,4 @@
-const languages = require('../data/translations');
+const languages = require('./data/translations');
 
 exports.get = (lang = 'en') => languages[lang] || {};
 exports.getLanguages = () => Object.keys(languages);

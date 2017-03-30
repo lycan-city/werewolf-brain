@@ -1,5 +1,5 @@
 const decks = require('./decks');
-const cards = require('../data/cards');
+const cards = require('./data/cards');
 
 exports.getAll = () => cards;
 

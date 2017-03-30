@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars*/
 const should = require('should');
 const cards = require('../src/cards');
-const cardsData = require('../data/cards');
+const cardsData = require('../src/data/cards');
 
 describe('Cards', () => {
     it('should return all the cards.', () => {

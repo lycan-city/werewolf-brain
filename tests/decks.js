@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions*/
 const should = require('should');
 const decks = require('../src/decks');
-const decksData = require('../data/decks');
+const decksData = require('../src/data/decks');
 
 describe('Decks', () => {
     it('should return all decks.', () => {
