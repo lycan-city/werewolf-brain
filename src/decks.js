@@ -1,5 +1,9 @@
 const decks = require('./data/decks');
 
-exports.getAll = () => decks;
+function getDeck(deckName) {
+    return decks[deckName.toLowerCase()];
+}
 
-exports.get = deckName => decks[deckName.toLowerCase()];
+exports.get = getDeck;
+exports.getAll = () => decks;
+exports.exists = deckName => !!getDeck(deckName || '');

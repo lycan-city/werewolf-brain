@@ -13,16 +13,18 @@ exports.getScriptFromDeck = moderator.getScriptFromDeck;
 exports.getLanguages = languages.getLanguages;
 exports.translateDeck = languages.translateDeck;
 
-exports.getGame = (players, options) => {
+exports.getGame = (players, options = {}) => {
     const language = options.language || 'en';
     const mode = options.mode || game.mode.NORMAL;
-    const deck = options.deck || decks.get('all');
-    const deckName = options.deckName || 'custom';
-    const currentDeck = decks.get(deckName);
+    const deck = options.deck;
+    const deckName = options.deckName || (deck ? 'custom' : 'all');
 
     assert(players > 0, 'Players must be greater than 0.');
-    assert(!currentDeck && deckName !== 'custom', `Deck ${deckName} is not defined.`);
+    assert(!options.deckName || decks.exists(deckName), `Deck ${deckName} is not defined.`);
 
-    if (currentDeck) return game.create(players, language, cards.inDeck(currentDeck), mode);
-    return game.create(players, language, cards.inCustomDeck(deck), mode);
+    if (!decks.exists(deckName))
+        return game.create(players, language, cards.inCustomDeck(deck), mode);
+
+    if(deck) console.warn('Custom deck ignored, deckName has more precedence.');
+    return game.create(players, language, cards.inDeck(deckName), mode);
 };
