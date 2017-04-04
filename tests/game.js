@@ -32,8 +32,8 @@ describe('Game', () => {
         normalGame.should.have.property('weight').which.is.a.Number();
     });
 
-    it('should give a weight within -5 and 5 on each normal game created.', () => {
-        normalGame.weight.should.be.within(-5, 5);
+    it('should give a weight within -10 and 10 on each normal game created.', () => {
+        normalGame.weight.should.be.within(-10, 10);
     });
 
     it('should contain a deck in each normal game created.', () => {
@@ -59,8 +59,8 @@ describe('Game', () => {
         chaosGame.should.have.property('weight').which.is.a.Number();
     });
 
-    it('should give a weight within -10 and 10 on each chaos game created.', () => {
-        chaosGame.weight.should.be.within(-10, 10);
+    it('should give a weight within -20 and 20 on each chaos game created.', () => {
+        chaosGame.weight.should.be.within(-20, 20);
     });
 
     it('should contain a deck in each chaos game created.', () => {

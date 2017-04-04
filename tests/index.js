@@ -38,7 +38,7 @@ describe('Index', () => {
         };
         const game = wwb.getGame(3, { deck: customDeck });
         game.should.be.an.Object();
-        game.weight.should.be.within(-5, 5);
+        game.weight.should.be.within(-10, 10);
     });
 
     it('should not create game a chaos game when specified', () => {
@@ -47,8 +47,8 @@ describe('Index', () => {
             werewolf: 1,
             wolf_cub: 1,
         };
-        const game = wwb.getGame(3, { deck: customDeck });
+        const game = wwb.getGame(3, { deck: customDeck, mode: 'CHAOS' });
         game.should.be.an.Object();
-        game.weight.should.be.within(-5, 5);
+        game.weight.should.be.within(-20, 20);
     });
 });
