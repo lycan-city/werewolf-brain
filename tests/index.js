@@ -7,11 +7,17 @@ describe('Index', () => {
     });
 
     it('should create games with no options.', () => {
-        wwb.getGame(3).should.be.an.Object();
+        const game = wwb.getGame(3);
+        game.should.be.an.Object();
+        game.should.have.property('players');
+        game.players.should.be.equal(3);
     });
 
     it('should create games with defined decks.', () => {
-        wwb.getGame(3, { deckName: 'novice' }).should.be.an.Object();
+        const game = wwb.getGame(3, { deckName: 'novice' });
+        game.should.be.an.Object();
+        game.should.have.property('players');
+        game.players.should.be.equal(3);
     });
 
     it('should create games with a custom deck.', () => {
