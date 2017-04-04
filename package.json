@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "prepublish": "npm run build",
-    "test": "mocha --compilers js:babel-core/register tests --recursive"
+    "test": "mocha --compilers js:babel-core/register tests --recursive",
+    "testw": "mocha --compilers js:babel-core/register tests --recursive -w"
   },
   "keywords": [
     "werewolf"

@@ -1,24 +1,29 @@
 const languages = require('./languages');
 
 const BALANCEDFLEX = 1;
-const CHAOSFLEX = 10;
+const CHAOSFLEX = 2;
 const SUCCESS = 1;
 const FAIL = 0;
 
-let game = {
-    deck: {},
-    weight: 100,
-    players: 0
-};
+let game;
+let allPlayers;
+let availableCards;
+let gameCandidate;
 
-let allPlayers = true;
-let availableCards = {};
-
-let gameCandidate = {
-    deck: {},
-    weight: 100,
-    players: 0
-};
+function newGame() {
+    game = {
+        deck: {},
+        weight: 100,
+        players: 0
+    };
+    allPlayers = true;
+    availableCards = {};
+    gameCandidate = {
+        deck: {},
+        weight: 100,
+        players: 0
+    };
+}
 
 function resetValues(chosenCards) {
     game = {
@@ -74,7 +79,9 @@ function setGame(players, chosenCards) {
     let playersAdded = addCardToDeck(getRandom(0, 1));
 
     while (playersAdded < players) {
-        playersAdded += addCardToDeck(game.weight >= 0);
+        const added = addCardToDeck(game.weight >= 0);
+        if (added === FAIL) break;
+        playersAdded += added;
     }
 }
 
@@ -116,6 +123,7 @@ function getGame(players, language, chosenCards, flexibility) {
 }
 
 exports.create = function create(playerCount, language, deck, gameMode) {
+    newGame();
     return getGame(playerCount, language, deck, gameMode === this.mode.NORMAL
         ? BALANCEDFLEX
         : CHAOSFLEX);
