@@ -1,3 +1,4 @@
+/* eslint-disable no-console*/
 const assert = require('assert');
 const cards = require('./src/cards');
 const decks = require('./src/decks');
@@ -22,9 +23,10 @@ exports.getGame = (players, options = {}) => {
     assert(players > 0, 'Players must be greater than 0.');
     assert(!options.deckName || decks.exists(deckName), `Deck ${deckName} is not defined.`);
 
-    if (!decks.exists(deckName))
+    if (!decks.exists(deckName)) {
         return game.create(players, language, cards.inCustomDeck(deck), mode);
+    }
 
-    if(deck) console.warn('Custom deck ignored, deckName has more precedence.');
+    if (deck) console.warn('Custom deck ignored, deckName has more precedence.');
     return game.create(players, language, cards.inDeck(deckName), mode);
 };
