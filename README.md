@@ -203,22 +203,25 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
 ```
 
 ### Create new scenario
-The function `getBalancedGame` allows you to start a new game using all the cards
-currently registered and the default language which is English (en). In this example
-we are starting a new game with ***8*** players. The function will return a game
+The function `getGame` allows you to start a new game using all the cards currently
+registered and the default language which is English (en). In this example we are 
+starting a new game with ***8*** players. The function will return a game
 object which is described above.
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 8;
-    const game = wwb.getBalancedGame(players);
+    const game = wwb.getGame(players);
 ```
 
-You can create a new scenario using different languages. The next example creates
-a game in Spanish.
+You can customize the game passing an option object as an aditional parameter. The
+next example creates a game in Spanish. 
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 8;
-    const game = wwb.getBalancedGame(players, 'es');
+    const options = { 
+        language: 'es'
+    }
+    const game = wwb.getGame(players, options);
 ```
 
 ### Night calls
@@ -227,7 +230,7 @@ moderate a game.
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 8;
-    const game = wwb.getBalancedGame(players);
+    const game = wwb.getGame(players);
     const calls = wwb.getScriptFromDeck(game.deck);
 ```
 
@@ -235,31 +238,33 @@ If you need the calls in another language, pass the desired as follows.
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 8;
-    const game = wwb.getBalancedGame(players);
+    const game = wwb.getGame(players);
     const calls = wwb.getScriptFromDeck(game.deck, 'es');
 ```
 
 ### Create a new scenario using a template
-The function `getGameFromDeck` lets you start a new game with only the
-template cards. In this example we need a game for ***12*** players who only know
-about the cards of Werewolves, Villagers, Seer and Mayor cards. In this case,
-which is intended for new players, the `Novice` template is an excellent option.
-The function will return a game object.
+The function `getGame` lets you start a new game with only the template cards. In
+this example we need a game for ***12*** players who only know about the cards of
+Werewolves, Villagers, Seer and Mayor cards. In this case, which is intended for
+new players, the `Novice` template is an excellent option. The function will return
+a game object.
 
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 12;
-    const template = 'Novice';
-    const game = wwb.getGameFromDeck(players, template);
+    const options = { 
+        deckName: 'Novice'
+    };
+    const game = wwb.getGame(players, options);
 ```
 
 ### Create a new scenario using custom template or cards
-The function `getBalancedGame` allows you to start a new game using a custom
-deck. This feature enables the creation of new roles or the use of more cards than
-the ones included in a single bundle. In this example we are adding another seer
-(normally 1), some aditional villagers (normally 20) and a new role **Van Helsing**
-(this new role has the ability to chase vampires every night). The function will
-return a game object.
+The function `getGame` allows you to start a new game using a custom deck. This
+feature enables the creation of new roles or the use of more cards than the ones
+included in a single bundle. In this example we are adding another seer (normally
+1), some aditional villagers (normally 20) and a new role **Van Helsing** (this new
+role has the ability to chase vampires every night). The function will return a
+game object.
 
 *Note: using this function requires an update to the language pack when new cards*
 *are added. For each new card, add the role and the description in the desired*
@@ -280,36 +285,44 @@ return a game object.
         { "key": "werewolf", "value": -6, "amount": 12 },
         { "key": "wolf_cub", "value": -8, "amount": 1 },
     ];
-    const game = wwb.getBalancedGame(players, 'en',  customCards);
+    const options = { 
+        deck: customCards
+    };
+    const game = wwb.getGame(players, options);
 ```
 
 ### Create new unfair scenario
-The function `getChaosGame` gives you the ability to start a new game with a
-higher rate of unbalance using all cards currently registered. In this example we
-are starting a new unfair game with ***12*** players. The function will return a
-game object.
+The function `getGame` gives you the ability to start a new game with a higher rate
+of unbalance using all cards currently registered. In this example we are starting
+a new unfair game with ***12*** players. The function will return a game object.
 
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 12;
-    const game = wwb.getChaosGame(players);
+    const options = { 
+        mode: 'CHAOS'
+    };
+    const game = wwb.getGame(players, options);
 ```
+*Note: use the function `getModes` to check current game modes.*
 
 ### Create a new unfair scenario using a template
-The function `getChaosGameFromDeck` allows you to start a new unfair game
-with the template cards only. In this example we are creating an unfair game for
-***9*** players who know all 'Amateur' template cards.
+The function `getGame` allows you to start a new unfair game with the template cards
+only. In this example we are creating an unfair game for ***9*** players who know
+all 'Amateur' template cards.
 
 ```javascript
     const wwb = require('werewolf-brain');
     const players = 9;
-    const template = 'Amateur';
-    const game = wwb.getChaosGameFromDeck(players, template);
+    const options = { 
+        deckName: 'Amateur',
+        mode: 'CHAOS'
+    };
+    const game = wwb.getGame(players, options);
 ```
 
 ### Create a new unfair scenario using custom template or cards
-The function `getChaosGame` allows you to start a new unfair game using a custom
-deck. This feature works like `getBalancedGame` but creates an unfair game. In
+The function `getGame` allows you to start a new unfair game using a custom deck. In
 this example we are adding another martyr (normally 1), some aditional Werewolves
 (normally 12) and a new role **Serial Killer** this new role visits a house and
 kills everyone every night. The function will return a game object.
@@ -334,5 +347,9 @@ kills everyone every night. The function will return a game object.
         { "key": "werewolf", "value": -6, "amount": 18 },
         { "key": "wolf_cub", "value": -8, "amount": 1 },
     ];
-    const game = wwb.getChaosGame(players, 'en', customCards);
+    const options = { 
+        deck: customCards,
+        mode: 'CHAOS'
+    };
+    const game = wwb.getChaosGame(players, options);
 ```
