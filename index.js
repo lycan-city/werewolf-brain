@@ -8,7 +8,7 @@ const languages = require('./src/languages');
 
 exports.getCards = cards.getAll;
 exports.getDecks = decks.getAll;
-exports.gameModes = game.mode;
+exports.getModes = game.mode;
 exports.getDeck = decks.get;
 exports.getScriptFromDeck = moderator.getScriptFromDeck;
 exports.getLanguages = languages.getLanguages;
