@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/wistcc/werewolf-brain.svg?branch=master)](https://travis-ci.org/wistcc/werewolf-brain)
+[![Build Status](https://travis-ci.org/lycan-city/werewolf-brain.svg?branch=master)](https://travis-ci.org/lycan-city/werewolf-brain)
 
 # Werewolf-Brain
 **Werewolf-Brain** (or **wwb**) is a JavaScript library for the creation of
