@@ -1,20 +1,24 @@
+const path = require('path');
+
 module.exports = {
     context: __dirname,
     entry: './index.js',
     output: {
-        path: 'dist',
+        path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
         library: 'werewolf-brain',
         libraryTarget: 'umd',
     },
     module: {
-        loaders: [
+        rules: [
+            { test: /\.json$/, use: 'json-loader' },
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel',
-            },
-            { test: /\.json$/, loader: 'json' }
+                exclude: [
+                    path.resolve(__dirname, 'node_modules')
+                ],
+                use: 'babel-loader'
+            }
         ]
     }
 };
