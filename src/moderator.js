@@ -2,6 +2,14 @@ const bindings = require('./data/bindings');
 const sequence = require('./data/sequence');
 const languages = require('./data/translations');
 
+const levels = {
+    game: 1,
+    deck: 2,
+    all: 3,
+};
+
+exports.levels = levels;
+
 exports.getScriptFromDeck = (deck, lang = 'en') => {
     const roles = new Set();
     deck.forEach((card) => {
@@ -24,11 +32,11 @@ exports.fromGame = (gameDeck, deck) => sequence.map((callKey) => {
         .filter(roleKey => bindings[roleKey].includes(callKey));
     let level = '';
     if (gameDeck.some(c => callGeneratingRoles.includes(c.key))) {
-        level = 'game';
+        level = levels.game;
     } else if (deck.some(c => callGeneratingRoles.includes(c.key))) {
-        level = 'deck';
+        level = levels.deck;
     } else {
-        level = 'all';
+        level = levels.all;
     }
 
     return {
