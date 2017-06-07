@@ -26,62 +26,62 @@ describe('Game', () => {
 
     describe('Create', () => {
         describe('given mode is NORMAL', () => {
-            beforeEach(() => {
+            beforeEach(function () {
                 this.game = game.create(players, language, cards, game.mode.NORMAL);
             });
 
-            it('should create a normal game.', () => {
+            it('should create a normal game.', function () {
                 this.game.should.not.be.empty();
             });
 
 
-            it('should contain the weight on each normal game created.', () => {
+            it('should contain the weight on each normal game created.', function () {
                 this.game.should.have.property('weight').which.is.a.Number();
             });
 
-            it('should give a weight within -10 and 10 on each normal game created.', () => {
+            it('should give a weight within -10 and 10 on each normal game created.', function () {
                 this.game.weight.should.be.within(-10, 10);
             });
 
-            it('should contain a deck in each normal game created.', () => {
+            it('should contain a deck in each normal game created.', function () {
                 this.game.should.have.property('deck');
             });
 
-            it('should contain the amount of players on each normal game created.', () => {
+            it('should contain the amount of players on each normal game created.', function () {
                 this.game.should.have.property('players').which.is.a.Number();
             });
 
-            it('should includes the maximun number of players on each normal game created.', () => {
+            it('should includes the maximun number of players on each normal game created.', function () {
                 this.game.players.should.be.equal(players);
             });
         });
 
         describe('given mode is NORMAL', () => {
-            beforeEach(() => {
+            beforeEach(function () {
                 this.game = game.create(players, language, cards, game.mode.CHAOS);
             });
 
-            it('should create a chaos game.', () => {
+            it('should create a chaos game.', function () {
                 this.game.should.not.be.empty();
             });
 
-            it('should contain the weight on each chaos game created.', () => {
+            it('should contain the weight on each chaos game created.', function () {
                 this.game.should.have.property('weight').which.is.a.Number();
             });
 
-            it('should give a weight within -20 and 20 on each chaos game created.', () => {
+            it('should give a weight within -20 and 20 on each chaos game created.', function () {
                 this.game.weight.should.be.within(-20, 20);
             });
 
-            it('should contain a deck in each chaos game created.', () => {
+            it('should contain a deck in each chaos game created.', function () {
                 this.game.should.have.property('deck');
             });
 
-            it('should contain the amount of players on each chaos game created.', () => {
+            it('should contain the amount of players on each chaos game created.', function () {
                 this.game.should.have.property('players').which.is.a.Number();
             });
 
-            it('should includes the maximun number of players on each chaos game created.', () => {
+            it('should includes the maximun number of players on each chaos game created.', function () {
                 this.game.players.should.be.equal(players);
             });
         });
