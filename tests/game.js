@@ -13,65 +13,77 @@ const cards = [
     { key: 'wolf_cub', value: -8, amount: 1 }
 ];
 
+const language = 'en';
+
 describe('Game', () => {
     const players = 25;
+
 
     it('should have both modes.', () => {
         game.mode.should.have.property('NORMAL');
         game.mode.should.have.property('CHAOS');
     });
 
-    let normalGame = {};
-    const language = 'en';
-    it('should create a normal game.', () => {
-        normalGame = game.create(players, language, cards, game.mode.NORMAL);
-        normalGame.should.not.be.empty();
-    });
+    describe('Create', () => {
+        describe('given mode is NORMAL', () => {
+            beforeEach(() => {
+                this.game = game.create(players, language, cards, game.mode.NORMAL);
+            });
 
-    it('should contain the weight on each normal game created.', () => {
-        normalGame.should.have.property('weight').which.is.a.Number();
-    });
+            it('should create a normal game.', () => {
+                this.game.should.not.be.empty();
+            });
 
-    it('should give a weight within -10 and 10 on each normal game created.', () => {
-        normalGame.weight.should.be.within(-10, 10);
-    });
 
-    it('should contain a deck in each normal game created.', () => {
-        normalGame.should.have.property('deck');
-    });
+            it('should contain the weight on each normal game created.', () => {
+                this.game.should.have.property('weight').which.is.a.Number();
+            });
 
-    it('should contain the amount of players on each normal game created.', () => {
-        normalGame.should.have.property('players').which.is.a.Number();
-    });
+            it('should give a weight within -10 and 10 on each normal game created.', () => {
+                this.game.weight.should.be.within(-10, 10);
+            });
 
-    it('should includes the maximun number of players on each normal game created.', () => {
-        normalGame.players.should.be.equal(players);
-    });
-    normalGame = {};
+            it('should contain a deck in each normal game created.', () => {
+                this.game.should.have.property('deck');
+            });
 
-    let chaosGame = {};
-    it('should create a chaos game.', () => {
-        chaosGame = game.create(players, language, cards, game.mode.CHAOS);
-        chaosGame.should.not.be.empty();
-    });
+            it('should contain the amount of players on each normal game created.', () => {
+                this.game.should.have.property('players').which.is.a.Number();
+            });
 
-    it('should contain the weight on each chaos game created.', () => {
-        chaosGame.should.have.property('weight').which.is.a.Number();
-    });
+            it('should includes the maximun number of players on each normal game created.', () => {
+                this.game.players.should.be.equal(players);
+            });
+        });
 
-    it('should give a weight within -20 and 20 on each chaos game created.', () => {
-        chaosGame.weight.should.be.within(-20, 20);
-    });
+        describe('given mode is NORMAL', () => {
+            beforeEach(() => {
+                this.game = game.create(players, language, cards, game.mode.CHAOS);
+            });
 
-    it('should contain a deck in each chaos game created.', () => {
-        chaosGame.should.have.property('deck');
-    });
+            it('should create a chaos game.', () => {
+                this.game.should.not.be.empty();
+            });
 
-    it('should contain the amount of players on each chaos game created.', () => {
-        chaosGame.should.have.property('players').which.is.a.Number();
-    });
+            it('should contain the weight on each chaos game created.', () => {
+                this.game.should.have.property('weight').which.is.a.Number();
+            });
 
-    it('should includes the maximun number of players on each chaos game created.', () => {
-        chaosGame.players.should.be.equal(players);
+            it('should give a weight within -20 and 20 on each chaos game created.', () => {
+                this.game.weight.should.be.within(-20, 20);
+            });
+
+            it('should contain a deck in each chaos game created.', () => {
+                this.game.should.have.property('deck');
+            });
+
+            it('should contain the amount of players on each chaos game created.', () => {
+                this.game.should.have.property('players').which.is.a.Number();
+            });
+
+            it('should includes the maximun number of players on each chaos game created.', () => {
+                this.game.players.should.be.equal(players);
+            });
+        });
     });
 });
