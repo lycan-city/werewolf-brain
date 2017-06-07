@@ -38,7 +38,7 @@ describe('Screenplay', () => {
 
         it('is expected to have `key` and `level`', () => {
             this.screenplay.forEach(call =>
-                expect(call).to.have.all.keys('key', 'level')
+                expect(call).to.have.all.keys('key', 'level', 'firstNight')
             );
         });
     });
