@@ -1,6 +1,7 @@
 const bindings = require('./data/bindings');
 const sequence = require('./data/sequence');
 const languages = require('./data/translations');
+const firstNight = require('./data/firstNight');
 
 const levels = {
     game: 1,
@@ -41,6 +42,7 @@ exports.fromGame = (gameDeck, deck) => sequence.map((callKey) => {
 
     return {
         key: callKey,
-        level
+        level,
+        firstNight: !!firstNight[callKey],
     };
 });
