@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars*/
+/* eslint-disable func-names */
 const should = require('should');
 const game = require('../src/game');
 
