@@ -57,7 +57,7 @@ describe('Game', () => {
             });
         });
 
-        describe('given mode is NORMAL', () => {
+        describe('given mode is CHAOS', () => {
             beforeEach(function () {
                 this.game = game.create(players, language, cards, game.mode.CHAOS);
             });
