@@ -1,3 +1,5 @@
+const { fromGame: screenplayFromGame } = require('./moderator');
+
 const languages = require('./languages');
 
 const BALANCEDFLEX = 1;
@@ -119,6 +121,7 @@ function getGame(players, language, chosenCards, flexibility) {
         if (tries > 5000) break;
     }
     gameCandidate.deck = languages.translateDeck(gameCandidate.deck, language);
+    gameCandidate.screenplay = screenplayFromGame(gameCandidate.deck, chosenCards);
     return gameCandidate;
 }
 

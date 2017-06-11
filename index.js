@@ -13,6 +13,9 @@ exports.getDeck = decks.get;
 exports.getScriptFromDeck = moderator.getScriptFromDeck;
 exports.getLanguages = languages.getLanguages;
 exports.translateDeck = languages.translateDeck;
+exports.translations = require('./src/data/translations');
+
+exports.filterLevels = moderator.levels;
 
 exports.getGame = (players, options = {}) => {
     const language = options.language || 'en';
@@ -27,6 +30,8 @@ exports.getGame = (players, options = {}) => {
         return game.create(players, language, cards.inCustomDeck(deck), mode);
     }
 
-    if (deck) console.warn('Custom deck ignored, deckName has more precedence.');
+    if (deck) {
+        console.warn('Custom deck ignored, deckName has more precedence.');
+    }
     return game.create(players, language, cards.inDeck(deckName), mode);
 };
