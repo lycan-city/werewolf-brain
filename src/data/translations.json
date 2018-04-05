@@ -1,6 +1,6 @@
 {
-    "en": {
-        "calls": {
+    "en" : {
+        "calls" : {
             "apprentice_seer" : "*Apprentice Seer, open your eyes.",
             "aura_seer" : "Aura Seer open your eyes, check a player.",
             "beholder" : "Beholder open your eyes, (point the player) this is the village seer.",
@@ -12,7 +12,7 @@
             "count_dracula" : "Dracula, open your eyes and pick a wife.",
             "cult_leader" : "Cultists, open your eyes, who's gonna be converted tonight?",
             "cupid" : "*Wake up Cupid, choose the lovebirds.",
-            "cursed" : "*Cursed, open your eyes",
+            "cursed" : "*Cursed, open your eyes.",
             "dire_wolf" : "*Wake up Dire Wolf, choose your companion.",
             "diseased" : "*Diseased, open your eyes.",
             "doppelganger" : "*Doppelgänger, open your eyes, choose your role model.",
@@ -21,8 +21,8 @@
             "fruit_brute" : "*Fruit Brute, open your eyes.",
             "hoodlum" : "*Wake up Hoodlum, choose 2 players.",
             "hunter" : "*Hunter, open your eyes.",
-            "insomniac" : "Insomniac, there have been activity around you (tell with hands).",
-            "leprechaun" : "Leprechaun open your eyes, (point the player) this player have been killed, will you redirect the attack?",
+            "insomniac" : "Insomniac, there has been activity around you (tell with hands).",
+            "leprechaun" : "Leprechaun open your eyes, (point the player) this player has been killed, will you redirect the attack?",
             "lovebirds" : "*Lovebirds meet each other.",
             "lycan" : "*Lycan, open your eyes.",
             "mason" : "*Masons, open your eyes and look for other Masons.",
@@ -41,12 +41,12 @@
             "vampire" : "Vampires, *(open your eyes and look for other vampires.), choose a player to kill.",
             "werewolves" : "Werewolves, *(open your eyes and look for other werewolves.), choose a player to kill.",
             "wild_child" : "*Wild Child, choose your role model.",
-            "witch" : "Witch open your eyes, (point the player) this player have been killed, do you want to revive him? (one per game), do you want to kill someone else? (one per game).",
-            "wolf_man" : "*Wolf Man wake up.",
+            "witch" : "Witch open your eyes, (point the player) this player has been killed, do you want to revive him? (one per game), do you want to kill someone else? (one per game).",
+            "wolf_man" : "*Wolfman wake up.",
             "wolverine" : "*Wolverine, open your eyes."
         },
         "roles" : {
-            "apprentice_seer": "Apprentice Seer",
+            "apprentice_seer" : "Apprentice Seer",
             "aura_seer" : "Aura Seer",
             "beholder" : "Beholder",
             "big_bad_wolf" : "Big Bad Wolf",
@@ -103,10 +103,10 @@
             "wild_child" : "Wild Child",
             "witch" : "Witch",
             "wolf_cub" : "Wolf Cub",
-            "wolf_man" : "Wolf Man",
+            "wolf_man" : "Wolfman",
             "wolverine" : "Wolverine"
         },
-        "descriptions":{
+        "descriptions" : {
             "apprentice_seer": "Become the Seer if the Seer is killed.",
             "aura_seer" : "At night, find out if someone has a non-ordinary role and what it is.",
             "beholder" : "Opens his eyes the first night to see who the seer is.",
@@ -119,12 +119,12 @@
             "cult_leader" : "Each night, choose a player to join your cult. If all players are in your cult, you win.",
             "cupid" : "Choose two players to be lovers. If one of those players dies, the other dies from a broken heart.",
             "cursed" : "You become a vampire when attacked by vampires or a werewolf if attacked by werewolves.",
-            "dire_wolf" : "Put yourself in love on the first night, if that player die you die.",
+            "dire_wolf" : "Put yourself in love on the first night, if that player dies you die.",
             "diseased" : "If you are attacked by werewolves, the werewolves do not get fed the following night.",
             "doppelganger" : "Select a player the first night. If that player dies, you secretly take that role.",
             "dream_wolf" : "If a werewolf dies, you replace them (you're not allowed to wake up until a werewolf dies.)",
-            "drunk" : "You are a villager until the third night, when you remember your real role.",
-            "fortune_teller" : "You know the exact roles of your inspectees (wolf man/lycan excepted), and the person you inspect is not made aware of this.",
+            "drunk" : "You are a villager until the third night when you remember your real role.",
+            "fortune_teller" : "You know the exact roles of your inspectees (Wolfman/Lycan excepted), and the person you inspect is not made aware of this.",
             "fruit_brute" : "If you are the last wolf left alive, you lose your appetite and cannot feed, but you are trying to root out all the villagers.",
             "ghost" : "Die the first night, then each day, write one letter clues as a message from the beyond (no names or initials).",
             "hoodlum" : "Indicate two players on the first night. If they die and you are alive at the end of the game, you win.",
@@ -139,9 +139,9 @@
             "mayor" : "Your vote counts twice when voting to lynch a player if you reveal yourself.",
             "minion" : "Work with the werewolves or vampires to kill the villagers. The moderator decides whether you work with the werewolves or the vampires.",
             "moderator" : "Moderates the game. You cannot play without this role.",
-            "nostradamus" : "Predict the winning team on the 1st night. If that team wins AND you are alive at the end of the game, you get a solo win. For the rest of the game you are a villager.",
+            "nostradamus" : "Predict the winning team on the 1st night. If that team wins AND you are alive at the end of the game, you get a solo win. For the rest of the game, you are a villager.",
             "old_hag" : "At night, indicate a player who must leave the village the next day.",
-            "old_man" : "You will die on night X, where X is the number of werewolves in the game plus one.",
+            "old_man" : "You will die at night X, where X is the number of werewolves in the game plus one.",
             "p_i" : "Inspect three adjacent players on one night.",
             "pacifist" : "You cannot vote when lynching.",
             "priest" : "Protect one player from death caused at night, including vampire attacks.",
@@ -168,8 +168,8 @@
         }
     },
 
-    "es": {
-        "calls": {
+    "es" : {
+        "calls" : {
             "apprentice_seer" : "*Aprendiz Vidente, abre tus ojos.",
             "aura_seer" : "Vidente Aura levántate, verifica un jugador.",
             "beholder" : "Espectador abre tus ojos, este es el Vidente de la aldea.",
@@ -201,7 +201,7 @@
             "old_hag" : "Vieja Arpía despierta, quién no será parte de la villa durante el día?",
             "p_i" : "Despierta Investigador Privado, inspecciona un jugador y sus vecinos.",
             "priest" : "Cura, por quién rezarás?",
-            "seer" : "Se levante el Vidente, verifica un jugador.",
+            "seer" : "Se levanta el Vidente, verifica un jugador.",
             "sorcerer" : "(Hasta que encuentre un lobo, luego se une a la manada y consutla antes de que los lobos seleccionen) Despierta Hechicra, apunta a un jugador.",
             "spellcaster" : "Conjurador, quién no podrá usar su voz durante el día?",
             "the_count" : "*Contador, la aldea ha sido invadida por (indicar la cantidad con las manos) lobos en esta parte y (indicar con las manos) en esta otra.",
@@ -274,8 +274,8 @@
             "wolf_man" : "Hombre lobo",
             "wolverine" : "Guepardo"
         },
-        "descriptions":{
-            "apprentice_seer": "Conviértete en el vidente si el vidente muere.",
+        "descriptions" : {
+            "apprentice_seer" : "Conviértete en el vidente si el vidente muere.",
             "aura_seer" : "Por la noche, averigüe si alguien tiene un papel no ordinario y cuál es.",
             "beholder" : "Abre sus ojos la primera noche para ver quién es el vidente.",
             "big_bad_wolf" : "Puedes atacar a una persona al lado del objetivo inicial de los lobos.",
@@ -284,7 +284,7 @@
             "bogeyman" : "Si los lobos no pueden decidir quién matar, lo hará por ellos. Usted gana si todos los jugadores nocturnos están muertos.",
             "chupacabra" : "Cada noche, seleccione un jugador. Si son lobos, mueren. Si todos los lobos están muertos, mata a un jugador cada noche.",
             "count_dracula" : "Cada noche, elige a un jugador para ser una esposa. Si lo hace a través de un ciclo de día / noche con 3 esposas, usted gana.",
-            "cult_leader" : "Cada noche, elija un jugador para unirse a su culto. Si todos los jugadores están en su culto, usted gana.",
+            "cult_leader" : "Cada noche, elige un jugador para unirse a su culto. Si todos los jugadores están en su culto, usted gana.",
             "cupid" : "Elige dos jugadores para ser amantes. Si uno de esos jugadores muere, el otro muere de un corazón roto.",
             "cursed" : "Usted se convierte en un vampiro cuando es atacado por vampiros o un lobo si es atacado por lobos.",
             "dire_wolf" : "Te enamoras en la primera noche, si ese jugador muere usted muere.",
@@ -301,7 +301,7 @@
             "leprechaun" : "Puede redirigir los ataques de los lobos a los jugadores adyacentes al (los) objetivo (s), pero no es necesario.",
             "little_girl" : "Como un aldeano pero cada noche ella consigue mirar hacia fuera pero ser discreto así que los lobos no notan, porque pueden señalar al moderador si piensan que usted es la niña. Usted muere si la acusación de los lobos era correcta.",
             "lone_wolf" : "Eres un lobo, pero solo ganas si eres el último miembro del equipo de lobo vivo.",
-            "lycan" : "Usted es un aldeano, pero parece ser un lobo para el investigador privado y los videntes .",
+            "lycan" : "Usted es un aldeano, pero parece ser un lobo para el investigador privado y los videntes.",
             "martyr" : "Tomas el lugar de alguien que ha sido linchado antes de que su papel sea revelado.",
             "mason" : "Sabes quiénes son los otros masones.",
             "mayor" : "Su voto cuenta dos veces cuando vota para linchar a un jugador si se revela.",
@@ -320,7 +320,7 @@
             "spellcaster" : "En la noche, indique a un jugador que no podrá usar su voz el día siguiente.",
             "tanner" : "Sólo ganas si eres linchado.",
             "the_count" : "La primera noche, se le dice cuántos lobos hay en cada mitad del pueblo.",
-            "thing" : "Cada noche, toque un jugador sentado inmediatamente a su lado.",
+            "thing" : "Cada noche, toca un jugador sentado inmediatamente a su lado.",
             "tough_guy" : "Sobrevive un día extra si es atacado por hombres lobo en la noche.",
             "troublemaker" : "Una vez por juego, elige tener dos intentos de linchamiento en un día. Si los votos están empatados, entonces has perdido tu oportunidad.",
             "vampire" : "Cada noche, elige un jugador. Ese jugador es eliminado cuando un jugador recibe su segunda acusación al día siguiente.",
@@ -331,7 +331,7 @@
             "wild_child" : "En la primera noche, el niño salvaje elige un modelo a seguir, y si el modelo muere, el niño salvaje se convierte en un hombre lobo. Hasta entonces, el niño salvaje es un aldeano normal.",
             "witch" : "Matas o salvas a un jugador, una vez por juego.",
             "wolf_cub" : "Si usted muere, los lobos obtienen dos muertes la noche siguiente.",
-            "wolf_man" : "Se despierta con los otros hombres lobos cada noche, pero el vidente lo ve como un aldeano.",
+            "wolf_man" : "Se despierta con los lobos cada noche, pero el vidente lo ve como un aldeano.",
             "wolverine" : "Cada noche, despierta con los otros Hombres Lobos. Si eres el hombre lobo más cercano al objetivo, los jugadores oyen un sonido metálico."
         }
     }
