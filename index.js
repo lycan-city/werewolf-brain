@@ -1,4 +1,4 @@
-/* eslint-disable no-console*/
+/* eslint-disable no-console */
 const assert = require('assert');
 const cards = require('./src/cards');
 const decks = require('./src/decks');
