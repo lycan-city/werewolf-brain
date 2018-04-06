@@ -92,8 +92,7 @@ function classifyCards(cards) {
     cards.forEach((card) => {
         if (card.value < 0) {
             for (let i = 0; i < card.amount; i++) {
-                classifiedCards.negatives.push({
-                    key: card.key, value: card.value, amount: 1 });
+                classifiedCards.negatives.push({ key: card.key, value: card.value, amount: 1 });
             }
         } else {
             for (let i = 0; i < card.amount; i++) {

@@ -8,7 +8,7 @@ const engine = new CLIEngine({
     useEslintrc: true,
 });
 
-const results = engine.executeOnFiles(paths).results;
+const { results } = engine.executeOnFiles(paths);
 
 function formatMessages(messages) {
     const errors = messages.map(message => `${message.line}:${message.column} ${message.message.slice(0, -1)} - ${message.ruleId}\n`);
