@@ -20,7 +20,7 @@ exports.filterLevels = moderator.levels;
 exports.getGame = (players, options = {}) => {
     const language = options.language || 'en';
     const mode = options.mode || game.mode.NORMAL;
-    const deck = options.deck;
+    const { deck } = options;
     const deckName = options.deckName || (deck ? 'custom' : 'all');
 
     assert(players > 0, 'Players must be greater than 0.');
