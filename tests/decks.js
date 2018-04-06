@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-expressions*/
+/* eslint-disable no-unused-expressions */
 const should = require('should');
 const decks = require('../src/decks');
 const decksData = require('../src/data/decks');

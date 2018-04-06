@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars*/
+/* eslint-disable no-unused-vars */
 const should = require('should');
 const cards = require('../src/cards');
 const cardsData = require('../src/data/cards');

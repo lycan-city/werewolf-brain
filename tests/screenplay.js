@@ -1,10 +1,10 @@
-/* eslint-disable no-undef*/
-/* eslint-disable no-unused-expressions*/
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable func-names */
 const chai = require('chai');
 const moderator = require('../src/moderator');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('Screenplay', () => {
     describe('fromGame()', () => {
@@ -38,9 +38,7 @@ describe('Screenplay', () => {
         });
 
         it('is expected to have `key` and `level`', function () {
-            this.screenplay.forEach(call =>
-                expect(call).to.have.all.keys('key', 'level', 'firstNight')
-            );
+            this.screenplay.forEach(call => expect(call).to.have.all.keys('key', 'level', 'firstNight'));
         });
     });
 });

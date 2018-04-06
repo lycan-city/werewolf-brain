@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+    mode: 'none',
     context: __dirname,
     entry: './index.js',
     output: {
@@ -11,7 +12,6 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.json$/, use: 'json-loader' },
             {
                 test: /\.js$/,
                 exclude: [
