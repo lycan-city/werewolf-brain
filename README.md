@@ -37,7 +37,7 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
         deck : [
             { key: 'villager', amount: v, role: 'Villager', description: 'Villager description'},
             { key: 'werewolf', amount: f, role: 'Werewolf', description: 'Werewolf description'},
-            { key: 'mason', amount: f, role: 'Mason', description: 'Mason description'}
+            { key: 'mason', amount: m, role: 'Mason', description: 'Mason description'}
         ],
         lang: en,
         weight : w,
@@ -45,80 +45,36 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
     };
 ```
 ### Templates
-#### Basic
-- 20 Villagers
-- 12 Werewolves
-
-#### Novice
-- 1 Mayor
-- 1 Seer
-- 20 Villagers
-- 12 Werewolves
-
-#### Amateur
-- 1 Mayor
-- 1 Prince
-- 1 Seer
-- 1 Tanner
-- 20 Villagers
-- 12 Werewolves
-- 1 Witch
-- 1 Wolf Cub
-
-#### Wolfpack
-- 1 Big Bad Wolf
-- 1 Dream Wolf
-- 1 Fruit Brute
-- 1 Lone Wolf
-- 1 Martyr
-- 1 Mayor
-- 1 Prince
-- 1 Seer
-- 20 Villagers
-- 12 Werewolves
-- 1 Wolf Cub
-
-#### Competent
-- 1 Apprentice Seer
-- 1 Bodyguard
-- 1 Cult Leader
-- 1 Cupid
-- 1 Cursed
-- 1 Diseased
-- 1 Doppelgänger
-- 1 Drunk
-- 1 Lycan
-- 3 Mason
-- 1 Mayor
-- 1 Minion
-- 1 Prince
-- 1 Seer
-- 1 Sorcerer
-- 1 Spellcaster
-- 1 Tanner
-- 20 Villagers
-- 12 Werewolves
-- 1 Wild Child
-- 1 Witch
-- 1 Wolf Cub
-
-#### Vampires
-- 1 Cursed
-- 1 Dire Wolf
-- 1 Drunk
-- 3 Mason
-- 1 Mayor
-- 1 Prince
-- 1 Seer
-- 1 Sorcerer
-- 1 Spellcaster
-- 1 Tanner
-- 8 Vampire
-- 20 Villager
-- 1 Virginia Woolf
-- 12 Werewolf
-- 1 Witch
-- 1 Wolf Cub
+| Card \ Template | Basic | Novice | Amateur | Wolfpack | Competent | Vampires |
+|-----------------|-------|--------|---------|----------|-----------|----------|
+| Apprentice Seer | -     | -      | -       | -        | 1         | -        |
+| Big Bad Wolf    | -     | -      | -       | 1        | -         | -        |
+| Bodyguard       | -     | -      | -       | -        | 1         | -        |
+| Cult Leader     | -     | -      | -       | -        | 1         | -        |
+| Cupid           | -     | -      | -       | -        | 1         | -        |
+| Cursed          | -     | -      | -       | -        | 1         | 1        |
+| Diseased        | -     | -      | -       | -        | 1         | -        |
+| Doppelgänger    | -     | -      | -       | -        | 1         | -        |
+| Dream Wolf      | -     | -      | -       | 1        | -         | -        |
+| Drunk           | -     | -      | -       | -        | 1         | 1        |
+| Fruit Brute     | -     | -      | -       | 1        | -         | -        |
+| Lone Wolf       | -     | -      | -       | 1        | -         | -        |
+| Lycan           | -     | -      | -       | -        | 1         | -        |
+| Martyr          | -     | -      | -       | 1        | -         | -        |
+| Mason           | -     | -      | -       | -        | 3         | 3        |
+| Mayor           | -     | 1      | 1       | 1        | 1         | 1        |
+| Minion          | -     | -      | -       | -        | 1         | -        |
+| Prince          | -     | -      | 1       | 1        | 1         | 1        |
+| Seer            | -     | 1      | 1       | 1        | 1         | 1        |
+| Sorcerer        | -     | -      | -       | -        | 1         | 1        |
+| Spellcaster     | -     | -      | -       | -        | 1         | 1        |
+| Tanner          | -     | -      | 1       | -        | 1         | 1        |
+| Vampire         | -     | -      | -       | -        | -         | 8        |
+| Villager        | 20    | 20     | 20      | 20       | 20        | 20       |
+| Werewolf        | 12    | 12     | 12      | 12       | 12        | 12       |
+| Wild Child      | -     | -      | -       | -        | 1         | -        |
+| Witch           | -     | -      | -       | -        | 1         | 1        |
+| Wolf Cub        | -     | -      | -       | -        | 1         | 1        |
 
 ## Examples
 ### Get all template registered
@@ -136,64 +92,64 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
 #### Cards Array
 ```javascript
     const cards = [
-        { "key": "apprentice_seer", "value": 4 },
-        { "key": "aura_seer", "value": 3 },
-        { "key": "beholder", "value": 2 },
-        { "key": "big_bad_wolf", "value": -9 },
-        { "key": "bloody_mary", "value": 1 },
-        { "key": "bodyguard", "value": 3 },
-        { "key": "bogeyman", "value": -6 },
-        { "key": "chupacabra", "value": 4 },
-        { "key": "count_dracula", "value": -2 },
-        { "key": "cult_leader", "value": 1 },
-        { "key": "cupid", "value": -2 },
-        { "key": "cursed", "value": -3 },
-        { "key": "dire_wolf", "value": -4 },
-        { "key": "diseased", "value": 3 },
-        { "key": "doppelganger", "value": -2 },
-        { "key": "dream_wolf", "value": -5 },
-        { "key": "drunk", "value": 3 },
-        { "key": "fortune_teller", "value": 0 },
-        { "key": "fruit_brute", "value": -3 },
-        { "key": "ghost", "value": 2 },
-        { "key": "hoodlum", "value": 0 },
-        { "key": "hunter", "value": 3 },
-        { "key": "insomniac", "value": 3 },
-        { "key": "leprechaun", "value": 5 },
-        { "key": "little_girl", "value": 0 },
-        { "key": "lone_wolf", "value": -4 },
-        { "key": "lycan", "value": -1 },
-        { "key": "mayor", "value": 2 },
-        { "key": "mason", "value": 2 },
-        { "key": "martyr", "value": 3 },
-        { "key": "minion", "value": -6 },
-        { "key": "moderator", "value": 0 },
-        { "key": "nostradamus", "value": 1 },
-        { "key": "old_hag", "value": 1 },
-        { "key": "old_man", "value": 0 },
-        { "key": "pacifist", "value": -1 },
-        { "key": "p_i", "value": 3 },
-        { "key": "priest", "value": 3 },
-        { "key": "prince", "value": 3 },
-        { "key": "sasquatch", "value": -2 },
-        { "key": "seer", "value": 7 },
-        { "key": "sorcerer", "value": -3 },
-        { "key": "spellcaster", "value": 1 },
-        { "key": "tanner", "value": 1 },
-        { "key": "the_count", "value": 5 },
-        { "key": "thing", "value": 3 },
-        { "key": "tough_guy", "value": 3 },
-        { "key": "troublemaker", "value": 2 },
-        { "key": "vampire", "value": -7 },
-        { "key": "village_idiot", "value": 2 },
-        { "key": "villager", "value": 1 },
-        { "key": "virginia_woolf", "value": -2 },
-        { "key": "werewolf", "value": -6 },
-        { "key": "wild_child", "value": 0 },
-        { "key": "witch", "value": 4 },
-        { "key": "wolf_cub", "value": -8 },
-        { "key": "wolf_man", "value": -9 },
-        { "key": "wolverine", "value": -4  }
+        { apprentice_seer: 4 },
+        { aura_seer: 3 },
+        { beholder: 2 },
+        { big_bad_wolf: -9 },
+        { bloody_mary: 1 },
+        { bodyguard: 3 },
+        { bogeyman: -6 },
+        { chupacabra: 4 },
+        { count_dracula: -2 },
+        { cult_leader: 1 },
+        { cupid: -2 },
+        { cursed: -3 },
+        { dire_wolf: -4 },
+        { diseased: 3 },
+        { doppelganger: -2 },
+        { dream_wolf: -5 },
+        { drunk: 3 },
+        { fortune_teller: 0 },
+        { fruit_brute: -3 },
+        { ghost: 2 },
+        { hoodlum: 0 },
+        { hunter: 3 },
+        { insomniac: 3 },
+        { leprechaun: 5 },
+        { little_girl: 0 },
+        { lone_wolf: -4 },
+        { lycan: -1 },
+        { mayor: 2 },
+        { mason: 2 },
+        { martyr: 3 },
+        { minion: -6 },
+        { moderator: 0 },
+        { nostradamus: 1 },
+        { old_hag: 1 },
+        { old_man: 0 },
+        { pacifist: -1 },
+        { p_i: 3 },
+        { priest: 3 },
+        { prince: 3 },
+        { sasquatch: -2 },
+        { seer: 7 },
+        { sorcerer: -3 },
+        { spellcaster: 1 },
+        { tanner: 1 },
+        { the_count: 5 },
+        { thing: 3 },
+        { tough_guy: 3 },
+        { troublemaker: 2 },
+        { vampire: -7 },
+        { village_idiot: 2 },
+        { villager: 1 },
+        { virginia_woolf: -2 },
+        { werewolf: -6 },
+        { wild_child: 0 },
+        { witch: 4 },
+        { wolf_cub: -8 },
+        { wolf_man: -9 },
+        { wolverine: -4 }
     ];
 ```
 
@@ -274,17 +230,17 @@ game object.
     const wwb = require('werewolf-brain');
     const players = 17;
     const customCards = [
-        { "key": "mason", "value": 2, "amount": 3 },
-        { "key": "minion", "value": -6, "amount": 1 },
-        { "key": "prince", "value": 3, "amount": 1 },
-        { "key": "seer", "value": 7, "amount": 1 },
-        { "key": "spellcaster", "value": 1, "amount": 1 },
-        { "key": "tanner", "value": 1, "amount": 1 },
-        { "key": "vampire", "value": -7, "amount": 8 },
-        { "key": "van_helsing", "value": 6, "amount": 1 },
-        { "key": "villager", "value": 1, "amount": 30 },
-        { "key": "werewolf", "value": -6, "amount": 12 },
-        { "key": "wolf_cub", "value": -8, "amount": 1 },
+        { mason: 3 },
+        { minion: 1 },
+        { prince: 1 },
+        { seer: 1 },
+        { spellcaster: 1 },
+        { tanner: 1 },
+        { vampire: 8 },
+        { van_helsing: 1 },
+        { villager: 30 },
+        { werewolf: 12 },
+        { wolf_cub: 1 },
     ];
     const options = { 
         deck: customCards
@@ -335,18 +291,18 @@ kills everyone every night. The function will return a game object.
     const wwb = require('werewolf-brain');
     const players = 22;
     const customCards = [
-        { "key": "martyr", "value": 3, "amount": 2 },
-        { "key": "mason", "value": 2, "amount": 3 },
-        { "key": "minion", "value": -6, "amount": 1 },
-        { "key": "prince", "value": 3, "amount": 1 },
-        { "key": "seer", "value": 7, "amount": 1 },
-        { "key": "serial_killer", "value": -5, "amount": 1 },
-        { "key": "spellcaster", "value": 1, "amount": 1 },
-        { "key": "tanner", "value": 1, "amount": 1 },
-        { "key": "vampire", "value": -7, "amount": 8 },
-        { "key": "villager", "value": 1, "amount": 20 },
-        { "key": "werewolf", "value": -6, "amount": 18 },
-        { "key": "wolf_cub", "value": -8, "amount": 1 },
+        { martyr: 2 },
+        { mason: 3 },
+        { minion: 1 },
+        { prince: 1 },
+        { seer: 1 },
+        { serial_killer: 1 },
+        { spellcaster: 1 },
+        { tanner: 1 },
+        { vampire: 8 },
+        { villager: 20 },
+        { werewolf: 18 },
+        { wolf_cub: 1 },
     ];
     const options = { 
         deck: customCards,
