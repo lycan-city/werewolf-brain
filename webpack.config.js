@@ -9,6 +9,7 @@ module.exports = {
         filename: 'index.js',
         library: 'werewolf-brain',
         libraryTarget: 'umd',
+        globalObject: 'this',
     },
     module: {
         rules: [
