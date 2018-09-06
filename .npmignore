@@ -1,2 +1,4 @@
-source
 tests
+.editorconfig
+.eslintrc
+.travis.yml

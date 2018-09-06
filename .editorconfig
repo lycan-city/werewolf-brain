@@ -8,10 +8,10 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-# 4 space indentation
+# 2 space indentation
 [*.js]
 indent_style = space
-indent_size = 4
+indent_size = 2
 charset = utf-8
 
 # Matches the exact files either package.json or .travis.yml
