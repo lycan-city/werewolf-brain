@@ -24,14 +24,11 @@ exports.getGame = (players, options = {}) => {
     const deckName = options.deckName || (deck ? 'custom' : 'all');
 
     assert(players > 0, 'Players must be greater than 0.');
-    assert(!options.deckName || decks.exists(deckName), `Deck ${deckName} is not defined.`);
 
-    if (!decks.exists(deckName)) {
+    if (deck) {
         return game.create(players, language, cards.inCustomDeck(deck), mode);
     }
 
-    if (deck) {
-        console.warn('Custom deck ignored, deckName has more precedence.');
-    }
+    assert(!options.deckName || decks.exists(deckName), `Deck ${deckName} is not defined.`);
     return game.create(players, language, cards.inDeck(deckName), mode);
 };
