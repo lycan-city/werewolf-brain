@@ -35,7 +35,6 @@ describe('Game', () => {
                 this.game.should.not.be.empty();
             });
 
-
             it('should contain the weight on each normal game created.', function () {
                 this.game.should.have.property('weight').which.is.a.Number();
             });

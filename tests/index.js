@@ -47,7 +47,7 @@ describe('Index', () => {
         game.weight.should.be.within(-10, 10);
     });
 
-    it('should not create game a chaos game when specified', () => {
+    it('should create a chaos game when specified', () => {
         const customDeck = {
             seer: 1,
             werewolf: 1,
