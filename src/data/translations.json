@@ -1,5 +1,6 @@
 {
     "en" : {
+        "name": "English",
         "calls" : {
             "apprentice_seer" : "*Apprentice Seer, open your eyes.",
             "aura_seer" : "Aura Seer open your eyes, check a player.",
@@ -169,6 +170,7 @@
     },
 
     "es" : {
+        "name": "Español",
         "calls" : {
             "apprentice_seer" : "*Aprendiz Vidente, abre tus ojos.",
             "aura_seer" : "Vidente Aura levántate, verifica un jugador.",
