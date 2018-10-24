@@ -1,6 +1,6 @@
 {
   "name": "werewolf-brain",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "description": "Werewolf game brain",
   "scripts": {
     "test": "mocha tests --recursive",
