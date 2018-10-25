@@ -24,7 +24,7 @@ exports.getScriptFromDeck = (deck, lang = 'en') => {
     const seq = sequence.filter(call => roles.has(call));
     const pack = languages[lang].calls;
 
-    return seq.map(key => pack[key]);
+    return seq.map(key => ({ key, call: pack[key] }));
 };
 
 exports.fromGame = (gameDeck, deck) => sequence.map((callKey) => {
