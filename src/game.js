@@ -98,7 +98,7 @@ function addCardToDeck(isNegative) {
 function setGame(players, classifiedCards) {
     resetValues(classifiedCards);
     // get first card randomly
-    let playersAdded = addCardToDeck(getRandom(0, 1));
+    let playersAdded = addCardToDeck(Math.round(Math.random()));
 
     while (playersAdded < players) {
         const added = addCardToDeck(game.weight >= pivot);
