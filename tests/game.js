@@ -35,6 +35,10 @@ describe('Game', () => {
                 this.game.should.not.be.empty();
             });
 
+            it('should contain the language on each normal game created.', function () {
+                this.game.should.have.property('language').which.is.a.String();
+            });
+
             it('should contain the weight on each normal game created.', function () {
                 this.game.should.have.property('weight').which.is.a.Number();
             });
@@ -63,6 +67,10 @@ describe('Game', () => {
 
             it('should create a chaos game.', function () {
                 this.game.should.not.be.empty();
+            });
+
+            it('should contain the language on each chaos game created.', function () {
+                this.game.should.have.property('language').which.is.a.String();
             });
 
             it('should contain the weight on each chaos game created.', function () {

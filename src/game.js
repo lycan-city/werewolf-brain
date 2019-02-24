@@ -33,7 +33,8 @@ function newGame() {
     gameCandidate = {
         deck: {},
         weight: 100,
-        players: 0
+        players: 0,
+        language: '',
     };
 }
 
@@ -129,6 +130,7 @@ function getGame(players, language, chosenCards, gameMode) {
     }
     gameCandidate.deck = languages.translateDeck(gameCandidate.deck, language);
     gameCandidate.screenplay = screenplayFromGame(gameCandidate.deck, chosenCards);
+    gameCandidate.language = language;
     return gameCandidate;
 }
 

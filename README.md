@@ -38,7 +38,7 @@ Game for ***p*** players, weight ***w*** and the cards ( ***v*** Villagers and
             { key: 'werewolf', amount: f, role: 'Werewolf', description: 'Werewolf description'},
             { key: 'mason', amount: m, role: 'Mason', description: 'Mason description'}
         ],
-        lang: en,
+        language: en,
         weight : w,
         players : p
     };
@@ -307,5 +307,5 @@ kills everyone every night. The function will return a game object.
         deck: customCards,
         mode: 'CHAOS'
     };
-    const game = wwb.getChaosGame(players, options);
+    const game = wwb.getGame(players, options);
 ```
